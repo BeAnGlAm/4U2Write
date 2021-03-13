@@ -6,6 +6,7 @@ function App() {
 
   const [promptArray, setPromptArray] = useState([])
 
+
   useEffect(() => {
 
     const dbRef = firebase.database().ref()
@@ -23,19 +24,21 @@ function App() {
       };
 
       setPromptArray(promptData);
-
-
     });
 
-
-
-
   }, [])
+
+
 
 
   return (
     <div className="App">
       <h1>4 U 2 Write</h1>
+      <form action="" onSubmit={handleSubmit}>
+        <label htmlFor="promptSubmit" >Submit a writing prompt of your own!</label>
+        <input type="text" id="promptSubmit" onChange={handleChange} value={textInput}/>
+        <button>Add your prompt!</button>
+      </form>
     </div>
   );
 }
