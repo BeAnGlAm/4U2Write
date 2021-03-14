@@ -1,6 +1,7 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import UserPrompt from './UserPrompt.js';
 
 function App() {
   const [promptArray, setPromptArray] = useState([]);
@@ -39,18 +40,11 @@ function App() {
   return (
     <div className="App">
       <h1>Write On</h1>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="promptSubmit">
-          Submit a writing prompt of your own!
-        </label>
-        <input
-          type="text"
-          id="promptSubmit"
-          onChange={handleChange}
-          value={textInput}
-        />
-        <button>Add your prompt!</button>
-      </form>
+      <UserPrompt
+        submit={handleSubmit}
+        change={handleChange}
+        input={textInput}
+      />
     </div>
   );
 }
