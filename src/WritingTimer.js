@@ -1,5 +1,5 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./writingTimer.css";
 
 function WritingTimer() {
@@ -13,34 +13,25 @@ function WritingTimer() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setUserTimeChoice(userTimeChoice);
-    //stop the timer
   };
 
-  const renderTime = ({ remainingTime }) => {
+  const timesUp = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className="timer">You met your writing goal!</div>;
+      return <div className="timesUp">You met your writing goal!</div>;
     }
-
-    return (
-      //remaing time = option value / 60
-      // 
-      <div className="timer">
-        {/* <div className="value">{remainingTime}</div> */}
-        {/* <div className="text">mins left to write</div> */}
-      </div>
-    );
   };
 
   return (
     <div className="writingTimer">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="timeSelect"></label>
         <select
           name="timeSelect"
           id="TimeSelect"
+          aria-label="choose how long you want to write for"
           onChange={handleTimeSelect}
           value={userTimeChoice}
         >
+          <option value="" disabled selected>select time goal</option>
           <option value="600">10 mins</option>
           <option value="900">15 mins</option>
           <option value="1200">20 mins</option>
@@ -52,11 +43,11 @@ function WritingTimer() {
         trailStrokeWidth={25}
         strokeWidth={25}
         isPlaying
-        duration={600} //user select value / 60
+        duration={10} //user select value / 60
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-        onComplete={() => [true, 1000]}
+        onComplete={() => [false]}
       >
-        {renderTime}
+      {timesUp}
       </CountdownCircleTimer>
     </div>
   );
