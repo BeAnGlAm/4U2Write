@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingArea from "./WritingArea.js";
+import PromptSchedule from "./PromptSchedule.js";
 
 function App() {
   const [promptArray, setPromptArray] = useState([]);
@@ -48,6 +49,7 @@ function App() {
         change={handleChange}
         input={textInput}
       />
+      <PromptSchedule />
     </div>
   );
 }
