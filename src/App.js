@@ -3,6 +3,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
+import WritingArea from "./WritingArea.js";
 
 function App() {
   const [promptArray, setPromptArray] = useState([]);
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <WritingArea />
       <UserPrompt
         submit={handleSubmit}
         change={handleChange}
