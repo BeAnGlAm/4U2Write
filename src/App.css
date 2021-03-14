@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header h3 {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 80vw;
+  margin: 0 auto;
+}

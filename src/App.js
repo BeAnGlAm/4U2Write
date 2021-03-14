@@ -1,7 +1,8 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import UserPrompt from './UserPrompt.js';
+import UserPrompt from "./UserPrompt.js";
+import Header from "./Header.js";
 
 function App() {
   const [promptArray, setPromptArray] = useState([]);
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Write On</h1>
+      <Header />
       <UserPrompt
         submit={handleSubmit}
         change={handleChange}
