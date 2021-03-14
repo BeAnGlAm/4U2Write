@@ -1,5 +1,5 @@
 import firebase from './firebase';
-import './App.css';
+import './App.scss';
 import React, { useState, useEffect, } from 'react';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
 
+    // database call user prompt submission call
     const dbRef = firebase.database().ref()
     dbRef.on('value', (data) => {
       // console.log(data.val());
@@ -25,6 +26,9 @@ function App() {
 
       setPromptArray(promptData);
     });
+
+    // color theme mode logic
+
 
   }, [])
 
