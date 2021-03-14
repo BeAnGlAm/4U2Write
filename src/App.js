@@ -3,6 +3,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
+import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <WritingTimer />
       <WritingArea />
       <UserPrompt
         submit={handleSubmit}
