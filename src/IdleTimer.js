@@ -3,13 +3,15 @@ import { useIdleTimer } from "react-idle-timer";
 function IdleTimer() {
 
    const handleOnIdle = () => {
-      console.log('user is idle');
+      if (isIdle()) {
+         console.log('user is idle')
+      };
    }
 
-   const {} = useIdleTimer({
-      timeout: 1000 * 60 * 14,
+   const {isIdle} = useIdleTimer({
+      timeout: 1000 * 15,
       onIdle: handleOnIdle,
-      debounce: 1000 * 60
+      debounce: 500
    })
 
    return (

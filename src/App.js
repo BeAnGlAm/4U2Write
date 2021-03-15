@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingArea from "./WritingArea.js";
+// import IdleTimer from "./IdleTimer.js";
 
 function App() {
   const [promptArray, setPromptArray] = useState([]);
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <IdleTimer /> */}
       <Header />
       <WritingArea />
       <UserPrompt
