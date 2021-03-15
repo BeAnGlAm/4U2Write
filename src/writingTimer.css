@@ -4,10 +4,17 @@ h1 {
   margin-bottom: 40px;
 }
 
+.timeSelect {
+  height: 50px;
+}
+
+/* css from the CountdownCircleTimer module: */
 .writingTimer,
 .timer-wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  width: 150px;
 }
 
 .time-wrapper {

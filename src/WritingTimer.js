@@ -1,35 +1,37 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./writingTimer.css";
 
 function WritingTimer() {
-  const [userTimeChoice, setUserTimeChoice] = useState("");
+  const [timeGoal, setTimeGoal] = useState(0);
+
+  // useEffect(() => {
+
+  // },[])
 
   const handleTimeSelect = (event) => {
-    setUserTimeChoice(event.target.value);
-    console.log(event.target.value);
+    // const parsed = parseInt(event.target.value);
+
+    setTimeGoal(parseInt(event.target.value));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setUserTimeChoice(userTimeChoice);
-  };
+  console.log(timeGoal)
 
-  const timesUp = ({ remainingTime }) => {
-    if (remainingTime === 0) {
-      return <div className="timesUp">You met your writing goal!</div>;
-    }
-  };
+  // const timesUp = ({ remainingTime }) => {
+  //   if (remainingTime === 0) {
+  //     return <div className="timesUp">You met your writing goal!</div>;
+  //   }
+  // };
 
   return (
     <div className="writingTimer">
-      <form onSubmit={handleSubmit}>
         <select
+          className="timeSelect"
           name="timeSelect"
-          id="TimeSelect"
+          id="timeSelect"
           aria-label="choose how long you want to write for"
           onChange={handleTimeSelect}
-          value={userTimeChoice}
+          value={timeGoal}
         >
           <option value="" disabled selected>select time goal</option>
           <option value="600">10 mins</option>
@@ -38,16 +40,16 @@ function WritingTimer() {
           <option value="1800">30 mins</option>
           <option value="2700">45 mins</option>
         </select>
-      </form>
       <CountdownCircleTimer
+        size={75}
         trailStrokeWidth={25}
         strokeWidth={25}
         isPlaying
-        duration={10} //user select value / 60
-        colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+        duration={timeGoal} //timeGoal state needs to go here instead of 600
+        colors={[["#78cad2", 0.33], ["#50869a", 0.33], ["#23395b"]]}
         onComplete={() => [false]}
       >
-      {timesUp}
+      {/* {timesUp} */}
       </CountdownCircleTimer>
     </div>
   );
