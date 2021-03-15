@@ -5,17 +5,9 @@ import "./writingTimer.css";
 function WritingTimer() {
   const [timeGoal, setTimeGoal] = useState(0);
 
-  // useEffect(() => {
-
-  // },[])
-
   const handleTimeSelect = (event) => {
-    // const parsed = parseInt(event.target.value);
-
     setTimeGoal(parseInt(event.target.value));
   };
-
-  console.log(timeGoal)
 
   // const timesUp = ({ remainingTime }) => {
   //   if (remainingTime === 0) {
@@ -41,11 +33,12 @@ function WritingTimer() {
           <option value="2700">45 mins</option>
         </select>
       <CountdownCircleTimer
+        // initialRemainingTime={timeGoal}
         size={75}
         trailStrokeWidth={25}
         strokeWidth={25}
         isPlaying
-        duration={timeGoal} //timeGoal state needs to go here instead of 600
+        duration={10} //timeGoal state needs to go here instead of 600
         colors={[["#78cad2", 0.33], ["#50869a", 0.33], ["#23395b"]]}
         onComplete={() => [false]}
       >
