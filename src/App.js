@@ -1,14 +1,14 @@
 import firebase from './firebase';
-import './App.scss';
+import './App.css';
 import React, { useState, useEffect, } from 'react';
 
 function App() {
 
-  const [promptArray, setPromptArray] = useState([])
+  const [promptArray, setPromptArray] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
 
   useEffect(() => {
-
     // database call user prompt submission call
     const dbRef = firebase.database().ref()
     dbRef.on('value', (data) => {
@@ -25,24 +25,48 @@ function App() {
       };
 
       setPromptArray(promptData);
-    });
+    })
 
-    // color theme mode logic
-
+    // dark mode local storage check
+    const currentTheme = localStorage.getItem('stylesColor');
+    if(currentTheme === 'darkStyles') {
+      setDarkMode(true)
+    } else {
+      setDarkMode(false)
+    }
 
   }, [])
 
+  const handleLabelClick = () => {
+    if (darkMode) {
+      localStorage.setItem('stylesColor', 'lightStyles');
+      setDarkMode(false);
+    } else {
+      localStorage.setItem('stylesColor', 'darkStyles');
+      setDarkMode(true);
+    }
+  }
 
 
 
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <h1>4 U 2 Write</h1>
-      <form action="" onSubmit={handleSubmit}>
+      <div className="modeSwitchWrap">
+        <label className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
+              onClick={handleLabelClick}
+            >
+          <div className="switchPath">
+            <div className="switchHandle"></div>
+          </div>
+        </label>
+      </div>
+
+      {/* <form action="" onSubmit={handleSubmit}>
         <label htmlFor="promptSubmit" >Submit a writing prompt of your own!</label>
         <input type="text" id="promptSubmit" onChange={handleChange} value={textInput}/>
         <button>Add your prompt!</button>
-      </form>
+      </form> */}
     </div>
   );
 }

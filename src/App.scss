@@ -1,11 +1,13 @@
 @import 'partials/setup';
 @import 'partials/variables';
+@import 'partials/darkMode';
 
 
 .App {
   text-align: center;
+  background-color: $bgLightMode;
 }
 
-body {
-  background-color: $bgLightMode;
+.App.darkStyles {
+  background-color: $bgDarkMode;
 }
