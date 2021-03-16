@@ -1,43 +1,57 @@
-import firebase from './firebase';
-import './App.css';
-import React, { useState, useEffect, } from 'react';
+import firebase from "./firebase";
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import UserPrompt from "./UserPrompt.js";
+import Header from "./Header.js";
+import WritingTimer from "./WritingTimer"
+import WritingArea from "./WritingArea.js";
 
 function App() {
 
   const [promptArray, setPromptArray] = useState([]);
+  const [textInput, setTextInput] = useState("");
   const [darkMode, setDarkMode] = useState(false);
-
+  
 
   useEffect(() => {
-    // database call user prompt submission call
-    const dbRef = firebase.database().ref()
-    dbRef.on('value', (data) => {
-      // console.log(data.val());
+    const dbRef = firebase.database().ref();
+    dbRef.on("value", (data) => {
       const promptData = data.val();
-      console.log(promptData);
+      // console.log(promptData);
 
       const promptItems = [];
 
       for (let promptKey in promptData) {
-        promptArray.push(
-          promptData[promptKey]
-        );
-      };
+        promptArray.push({
+          uniqueKey: promptKey,
+          userPrompt: promptData[promptKey],
+        });
+      }
 
       setPromptArray(promptData);
-    })
+    });
 
-    // dark mode local storage check
+        // dark mode local storage check
     const currentTheme = localStorage.getItem('stylesColor');
     if(currentTheme === 'darkStyles') {
       setDarkMode(true)
     } else {
       setDarkMode(false)
     }
+  }, []);
 
-  }, [])
+  const handleChange = (event) => {
+    setTextInput(event.target.value);
+  };
 
-  //Label onClick for dark mode toggle
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const dbRef = firebase.database().ref();
+    dbRef.push(textInput);
+    setTextInput("");
+  };
+
+    //Label onClick for dark mode toggle
   const handleLabelClick = () => {
     if (darkMode) {
       localStorage.setItem('stylesColor', 'lightStyles');
@@ -48,11 +62,9 @@ function App() {
     }
   }
 
-
-
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
-      <h1>4 U 2 Write</h1>
+      <Header />
       <div className="modeSwitchWrap">
         <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
@@ -62,9 +74,15 @@ function App() {
             <div className="switchHandle"></div>
           </div>
         </label>
+
+        <WritingTimer />
+        <WritingArea />
+        <UserPrompt
+          submit={handleSubmit}
+          change={handleChange}
+          input={textInput}
+        />
       </div>
-
-
     </div>
   );
 }
