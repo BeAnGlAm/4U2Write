@@ -1,25 +1,69 @@
+import { useState, useEffect } from 'react';
 // get current UTC
-const currentDate = new Date();
-// this will return a number as of UTC(universal time)
-const currentDay = currentDay.getUTCDay();
+
+// console.log(currentDay)
 // return something like 0 - 6, 0 represent Sunday
-​
-// Then we can save currentDay to firebase, so that this number is always constant and is always saved somewhere universally. 
-​
+function PromptSchedule () {
+  const currentDate = new Date();
+// add a day
+currentDate.setDate(currentDate.getDate() - 1);
+console.log(currentDate);
+// if day === day -1, do nothing OR push prompt if not
+
+}
+
+// Then we can save currentDay to firebase, so that this number is always constant and is always saved somewhere universally.
+
+// ​
 // Whenever user comes to the app and mounts the app
 // we are going to run through these again 
-const currentDate = new Date();
-const currentDay = currentDay.getUTCDay();
+// const currentDate = new Date();
+// const currentDay = currentDay.getUTCDay();
 // we are also going to grab that property from firebase
 // ... some code that grabs the day we saved from firebase, save it into a variable/state call it savedDay or something
 // then we can compare the currentDay to the savedDay
-if (currentDay !== savedDay) { 
-  // if the days are different, then that means it's a new day in UTC time. 
-  // update firebase savedDay with the new value
-  // ... code that gets a different prompt
-}
+// if (currentDay !== savedDay) { 
+//   if the days are different, then that means it's a new day in UTC time. 
+//   update firebase savedDay with the new value
+//   ... code that gets a different prompt
+// }
+
+const [dayState, setDayState] = useState([]);
+
+useEffect(() => {
+    const dbRef = firebase.database().ref();
+    dbRef.on("value", (data) => {
+      const promptData = data.val();
+      
+      const promptItems = [];
+      for (let promptKey in promptData) {
+        promptArray.pull({
+          uniqueKey: promptKey,
+          userPrompt: promptData[promptKey],
+        });
+      }
+      setPromptArray(promptData);
+    });
+  }, []);
+
+
+
 export default PromptSchedule;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLD CODE
 // //create state for dailyPrompt and randomPrompt
 //   const [dailyPrompt, setDailyPrompt] = useState([]);
 //   const [randomPrompt, setRandomPrompt] = useState(0);
