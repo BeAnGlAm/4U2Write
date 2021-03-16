@@ -5,6 +5,7 @@ import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
+import IdleTimer from './IdleTimer.js';
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
+      <IdleTimer />
       <Header />
       <div className="modeSwitchWrap">
         <label 
