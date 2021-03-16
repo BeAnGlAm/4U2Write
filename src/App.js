@@ -37,6 +37,7 @@ function App() {
 
   }, [])
 
+  //Label onClick for dark mode toggle
   const handleLabelClick = () => {
     if (darkMode) {
       localStorage.setItem('stylesColor', 'lightStyles');
@@ -53,20 +54,17 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <h1>4 U 2 Write</h1>
       <div className="modeSwitchWrap">
-        <label className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
-              onClick={handleLabelClick}
-            >
+        <label 
+          className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
+          onClick={handleLabelClick}
+        >
           <div className="switchPath">
             <div className="switchHandle"></div>
           </div>
         </label>
       </div>
 
-      {/* <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="promptSubmit" >Submit a writing prompt of your own!</label>
-        <input type="text" id="promptSubmit" onChange={handleChange} value={textInput}/>
-        <button>Add your prompt!</button>
-      </form> */}
+
     </div>
   );
 }
