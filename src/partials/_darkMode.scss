@@ -1,0 +1,32 @@
+.modeSwitchWrap {
+  width: 100%;
+  text-align: right;
+  .modeSwitchLabel {
+    display: inline-block;
+    cursor: pointer;
+    .switchPath {
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: $heavyPink;
+      transition: all 0.15s ease-in-out;
+      .switchHandle {
+        background-color: $bgDarkMode;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: all 0.15s ease-in-out;
+      }
+    }
+    &.active {
+      .switchPath {
+        background-color: $neutralBlue;
+      }
+      .switchHandle {
+        transform: translateX(20px);
+        background-color: $bgLightMode;
+      }
+    }
+  }
+}
+

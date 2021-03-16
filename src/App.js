@@ -7,8 +7,11 @@ import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 
 function App() {
+
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+  
 
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -27,6 +30,14 @@ function App() {
 
       setPromptArray(promptData);
     });
+
+        // dark mode local storage check
+    const currentTheme = localStorage.getItem('stylesColor');
+    if(currentTheme === 'darkStyles') {
+      setDarkMode(true)
+    } else {
+      setDarkMode(false)
+    }
   }, []);
 
   const handleChange = (event) => {
@@ -40,16 +51,38 @@ function App() {
     setTextInput("");
   };
 
+    //Label onClick for dark mode toggle
+  const handleLabelClick = () => {
+    if (darkMode) {
+      localStorage.setItem('stylesColor', 'lightStyles');
+      setDarkMode(false);
+    } else {
+      localStorage.setItem('stylesColor', 'darkStyles');
+      setDarkMode(true);
+    }
+  }
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <Header />
-      <WritingTimer />
-      <WritingArea />
-      <UserPrompt
-        submit={handleSubmit}
-        change={handleChange}
-        input={textInput}
-      />
+      <div className="modeSwitchWrap">
+        <label 
+          className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
+          onClick={handleLabelClick}
+        >
+          <div className="switchPath">
+            <div className="switchHandle"></div>
+          </div>
+        </label>
+
+        <WritingTimer />
+        <WritingArea />
+        <UserPrompt
+          submit={handleSubmit}
+          change={handleChange}
+          input={textInput}
+        />
+      </div>
     </div>
   );
 }

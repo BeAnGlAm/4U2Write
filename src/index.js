@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import WebFont from 'webfontloader';
+import { useEffect } from 'react';
+
+WebFont.load({
+  google: {
+    families: ['Josefin Sans:600', 'Lato: 300']
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
