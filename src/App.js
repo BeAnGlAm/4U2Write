@@ -65,25 +65,25 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
-      {/* <IdleTimer /> */}
+      <IdleTimer />
       <Header />
       <div className="modeSwitchWrap">
-        {/* <label 
+        <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
           onClick={handleLabelClick}
         >
           <div className="switchPath">
             <div className="switchHandle"></div>
           </div>
-        </label> */}
+        </label>
 
         <WritingTimer />
-        {/* <WritingArea /> */}
-        {/* <UserPrompt
+        <WritingArea />
+        <UserPrompt
           submit={handleSubmit}
           change={handleChange}
           input={textInput}
-        /> */}
+        />
       </div>
     </div>
   );
