@@ -12,3 +12,14 @@ $highlightBlue: #78CAD2;
 // Fonts
 $headingFont: 'Josefin Sans', sans-serif;
 $bodyFont: 'Lato', sans-serif;
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $headingFont;
+}
+
+p {
+  font-family: $bodyFont;
+}
