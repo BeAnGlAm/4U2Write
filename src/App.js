@@ -123,17 +123,6 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
-<<<<<<< HEAD
-        {
-          promptArray.map((item) => {
-            if (item.userPrompt.activeDate === activeDateString) {
-              return(
-                <p>{item.userPrompt.prompt}</p>
-                )
-              }
-          })
-        }
-=======
       <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
         {showPrompt &&<>
           {
@@ -146,7 +135,6 @@ function App() {
               })
             }
         </>}
->>>>>>> a2f0ed114ca791c08102d2678378b9af32362791
       <WritingTimer />
       <WritingArea />
       <div className="modeSwitchWrap">
