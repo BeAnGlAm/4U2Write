@@ -1,19 +1,20 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Header from "./Header.js";
-import WritingTimer from "./WritingTimer"
-import WritingArea from "./WritingArea.js";
-import IdleTimer from './IdleTimer.js';
-import PromptSubmit from "./PromptSubmit";
-import UserPrompt from "./UserPrompt";
-import Footer from './Footer.js';
-import PromptSchedule from "./PromptSchedule.js";
+import Header from "./components/Header.js";
+import DisplayPrompt from "./components/DisplayPrompt";
+import WritingTimer from "./components/WritingTimer"
+import WritingArea from "./components/WritingArea.js";
+import IdleTimer from './components/IdleTimer.js';
+import PromptSubmit from "./components/PromptSubmit";
+import UserPrompt from "./components/UserPrompt";
+import Footer from './components/Footer.js';
 
 function App() {
 
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [showPrompt, setShowPrompt] = useState(true);
   const [showContent, setShowContent] = useState (false);
   const [darkMode, setDarkMode] = useState(false);
   const [activePrompt, setActivePrompt] = useState({});
@@ -41,7 +42,7 @@ function App() {
           userPrompt: promptData[promptKey],
         });
       }
-      console.log(promptItems);
+      // console.log(promptItems);   <--REMOVE
       setPromptArray(promptItems);
 
       const randomNumber = Math.floor(Math.random() * promptItems.length);
@@ -54,9 +55,9 @@ function App() {
           let dateKey = randomDate.uniqueKey;
           let datePrompt = randomDate.userPrompt.prompt;
           let updatedDate = randomDate.userPrompt.activeDate = activeDateString;
-          console.log(randomDate);
-          console.log(updatedDate);
-          console.log(dateKey);
+          // console.log(randomDate);  <--REMOVE
+          // console.log(updatedDate);  <--REMOVE
+          // console.log(dateKey);  <--REMOVE
 
           const dbRef = firebase.database().ref();
           dbRef.child(dateKey).update({
@@ -66,7 +67,7 @@ function App() {
         } else {
           setActivePrompt(activeItem[0]);
         }
-        // console.log(updatedDate);
+        // console.log(updatedDate);  <--REMOVE
     });
     
     // dark mode local storage check
@@ -77,7 +78,8 @@ function App() {
       setDarkMode(false)
     }
   }, []);
-  console.log(promptArray);
+  
+  // console.log(promptArray); <--REMOVE
   
   const handleChange = (event) => {
     setTextInput(event.target.value);
@@ -107,22 +109,25 @@ function App() {
   const activeDate = todaysDate.getDate();
   const activeMonth = todaysDate.getMonth();
   const activeDateString = `${activeDate}-${activeMonth}`;
-  console.log(activeDateString);
-  console.log(promptArray);
+  // console.log(activeDateString);  <--REMOVE
+  // console.log(promptArray);   <--REMOVE
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
-        {
-          promptArray.map((item) => {
-            if (item.userPrompt.activeDate === activeDateString) {
-              return(
-                <p>{item.userPrompt.prompt}</p>
-                )
-              }
-          })
-        }
+      <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
+        {showPrompt &&<>
+          {
+            promptArray.map((item) => {
+              if (item.userPrompt.activeDate === activeDateString) {
+                return(
+                  <h2>{item.userPrompt.prompt}</h2>
+                  )
+                }
+              })
+            }
+        </>}
       <WritingTimer />
       <WritingArea />
       <div className="modeSwitchWrap">
@@ -134,6 +139,8 @@ function App() {
             <div className="switchHandle"></div>
           </div>
         </label>
+      </div>
+        {/* <PromptSchedule /> */}
         <PromptSubmit onShow={() => setShowContent(!showContent)} />
         {showContent && <UserPrompt
         // && is shorthand for a ternary minus the else
@@ -142,8 +149,6 @@ function App() {
           input={textInput}
         />}
         <Footer />
-        {/* <PromptSchedule /> */}
-      </div>
     </div>
   );
 }

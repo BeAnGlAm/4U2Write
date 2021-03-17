@@ -279,10 +279,6 @@ p {
   background-color: #EAE5E9;
 }
 
-* {
-  border: 1px solid coral;
-}
-
 .App {
   height: 100vh;
   text-align: center;
