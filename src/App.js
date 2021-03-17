@@ -35,7 +35,6 @@ function App() {
       const promptData = data.val();
       // we will use the below logic but not set it in state
       const promptItems = [];
-<<<<<<< HEAD
       for (let promptKey in promptData) {
         promptItems.push({
           uniqueKey: promptKey,
@@ -44,7 +43,6 @@ function App() {
       }
       console.log(promptItems);
       setPromptArray(promptItems);
-=======
 
       // for (let promptKey in promptData) {
       //   promptArray.push({
@@ -52,7 +50,6 @@ function App() {
       //     userPrompt: promptData[promptKey],
       //   });
       // }
->>>>>>> 40e5d9342bfef303d6f9ddefd711f8c45fcbdacb
 
       const randomNumber = Math.floor(Math.random() * promptItems.length);
         const promptArrayCopy = [...promptItems];
@@ -124,7 +121,6 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
-<<<<<<< HEAD
         {
           promptArray.map((item) => {
             if (item.userPrompt.activeDate === activeDateString) {
@@ -134,10 +130,8 @@ function App() {
               }
           })
         }
-=======
       <WritingTimer />
       <WritingArea />
->>>>>>> 40e5d9342bfef303d6f9ddefd711f8c45fcbdacb
       <div className="modeSwitchWrap">
         <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
