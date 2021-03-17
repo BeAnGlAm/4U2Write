@@ -7,6 +7,7 @@ import WritingArea from "./WritingArea.js";
 import IdleTimer from './IdleTimer.js';
 import PromptSubmit from "./PromptSubmit";
 import UserPrompt from "./UserPrompt";
+import Footer from './Footer.js';
 
 function App() {
 
@@ -87,6 +88,7 @@ function App() {
           change={handleChange}
           input={textInput}
         />}
+        <Footer />
       </div>
     </div>
   );
