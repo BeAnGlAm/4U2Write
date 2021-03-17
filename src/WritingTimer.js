@@ -8,6 +8,10 @@ function WritingTimer() {
     setTimeGoal(parseInt(event.target.value));
   };
 
+  function timesUp() {
+    console.log("timesup")
+  }
+
   return (
     <div className="writingTimer">
       <select
@@ -18,8 +22,8 @@ function WritingTimer() {
         onChange={handleTimeSelect}
         value={timeGoal}
       >
-        <option>select time goal</option>
-        <option value="10">10 seconds</option>
+        <option value="0" selected>select time goal</option>
+        <option value="5">5 seconds</option>
         <option value="600">10 mins</option>
         <option value="900">15 mins</option>
         <option value="1200">20 mins</option>
@@ -29,12 +33,13 @@ function WritingTimer() {
       <ReactCountdownClock
         seconds={timeGoal}
         showMilliseconds={false}
-        // font={}
+        // font={"Josefin Sans"}
         color="#78cad2"
         alpha={0.9}
-        size={75}
+        size={65}
         weight={15}
-        // handleComplete={takes a function}
+        onComplete={timesUp}
+        // onComplete={() => console.log("times up!")}
       />
     </div>
   );
