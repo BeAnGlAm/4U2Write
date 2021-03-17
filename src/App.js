@@ -5,16 +5,25 @@ import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
+import IdleTimer from './IdleTimer.js';
+import Footer from './Footer.js';
 import PromptSchedule from "./PromptSchedule.js";
 
 function App() {
-  const [promptArray, setPromptArray] = useState("");
-  const [textInput, setTextInput] = useState("");  
+
+  const [promptArray, setPromptArray] = useState([]);
+  const [textInput, setTextInput] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+  const [activePrompt, setActivePrompt] = useState({});
 
   useEffect(() => {
     const dbRef = firebase.database().ref();
     dbRef.on("value", (data) => {
-      const todaysDate = new Date();
+      // const todaysDate = new Date();
+      // const activeDate = todaysDate.getDate();
+      // const activeMonth = todaysDate.getMonth();
+      // const activeDateString = `${activeDate}-${activeMonth}`;
+      console.log(activeDateString);
       // console.log(todaysDate)      
       // walk through all objects we're getting back from firebase
       // check each one and see if activeDate matches todays date on any of them
@@ -25,15 +34,40 @@ function App() {
       // we will use the below logic but not set it in state
       const promptItems = [];
       for (let promptKey in promptData) {
-        promptArray.push({
+        promptItems.push({
           uniqueKey: promptKey,
           userPrompt: promptData[promptKey],
         });
       }
-      setPromptArray(promptData);
-    });
+      console.log(promptItems);
+      setPromptArray(promptItems);
 
-        // dark mode local storage check
+      const randomNumber = Math.floor(Math.random() * promptItems.length);
+        const promptArrayCopy = [...promptItems];
+        const activeItem = promptArrayCopy.filter((item) => {
+          return item.userPrompt.activeDate === activeDateString;
+        })
+        if (activeItem.length === 0) {
+          let randomDate = promptArrayCopy[randomNumber];
+          let dateKey = randomDate.uniqueKey;
+          let datePrompt = randomDate.userPrompt.prompt;
+          let updatedDate = randomDate.userPrompt.activeDate = activeDateString;
+          console.log(randomDate);
+          console.log(updatedDate);
+          console.log(dateKey);
+
+          const dbRef = firebase.database().ref();
+          dbRef.child(dateKey).update({
+            activeDate: updatedDate
+          })
+          // pick random prompt and update prompts active date to be todays date << tricky! firebase has update method, unique key is important
+        } else {
+          setActivePrompt(activeItem[0]);
+        }
+        // console.log(updatedDate);
+    });
+    
+    // dark mode local storage check
     const currentTheme = localStorage.getItem('stylesColor');
     if(currentTheme === 'darkStyles') {
       setDarkMode(true)
@@ -41,6 +75,7 @@ function App() {
       setDarkMode(false)
     }
   }, []);
+  console.log(promptArray);
   
   const handleChange = (event) => {
     setTextInput(event.target.value);
@@ -51,7 +86,7 @@ function App() {
     const dbRef = firebase.database().ref();
     dbRef.push({
       prompt: textInput,
-      activeDate: null
+      activeDate: 0
     });
     setTextInput("");
   };
@@ -66,18 +101,46 @@ function App() {
       setDarkMode(true);
     }
   }
+  const todaysDate = new Date();
+  const activeDate = todaysDate.getDate();
+  const activeMonth = todaysDate.getMonth();
+  const activeDateString = `${activeDate}-${activeMonth}`;
+  console.log(activeDateString);
+  console.log(promptArray);
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
-      <WritingArea />
-      <UserPrompt
-        submit={handleSubmit}
-        change={handleChange}
-        input={textInput}
-      />
-      <PromptSchedule />
+        {
+          promptArray.map((item) => {
+            if (item.userPrompt.activeDate === activeDateString) {
+              return(
+                <p>{item.userPrompt.prompt}</p>
+                )
+              }
+          })
+        }
+      <div className="modeSwitchWrap">
+        <label 
+          className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
+          onClick={handleLabelClick}
+        >
+          <div className="switchPath">
+            <div className="switchHandle"></div>
+          </div>
+        </label>
+
+        <WritingTimer />
+        <WritingArea />
+        <UserPrompt
+          submit={handleSubmit}
+          change={handleChange}
+          input={textInput}
+        />
+        <Footer />
+        {/* <PromptSchedule /> */}
+      </div>
     </div>
   );
 }
