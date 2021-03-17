@@ -1,17 +1,19 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 import IdleTimer from './IdleTimer.js';
+import PromptSubmit from "./PromptSubmit";
+import UserPrompt from "./UserPrompt";
 import Footer from './Footer.js';
 
 function App() {
 
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [showContent, setShowContent] = useState (false);
   const [darkMode, setDarkMode] = useState(false);
   
 
@@ -23,12 +25,12 @@ function App() {
 
       const promptItems = [];
 
-      for (let promptKey in promptData) {
-        promptArray.push({
-          uniqueKey: promptKey,
-          userPrompt: promptData[promptKey],
-        });
-      }
+      // for (let promptKey in promptData) {
+      //   promptArray.push({
+      //     uniqueKey: promptKey,
+      //     userPrompt: promptData[promptKey],
+      //   });
+      // }
 
       setPromptArray(promptData);
     });
@@ -68,6 +70,8 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
+      <WritingTimer />
+      <WritingArea />
       <div className="modeSwitchWrap">
         <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
@@ -77,14 +81,13 @@ function App() {
             <div className="switchHandle"></div>
           </div>
         </label>
-
-        <WritingTimer />
-        <WritingArea />
-        <UserPrompt
+        <PromptSubmit onShow={() => setShowContent(!showContent)} />
+        {showContent && <UserPrompt
+        // && is shorthand for a ternary minus the else
           submit={handleSubmit}
           change={handleChange}
           input={textInput}
-        />
+        />}
         <Footer />
       </div>
     </div>
