@@ -6,6 +6,7 @@ import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 import IdleTimer from './IdleTimer.js';
+import Footer from './Footer.js';
 
 function App() {
 
@@ -84,6 +85,7 @@ function App() {
           change={handleChange}
           input={textInput}
         />
+        <Footer />
       </div>
     </div>
   );
