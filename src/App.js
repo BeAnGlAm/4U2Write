@@ -1,11 +1,12 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 import IdleTimer from './IdleTimer.js';
+import PromptSubmit from "./PromptSubmit";
+import UserPrompt from "./UserPrompt";
 import Footer from './Footer.js';
 import PromptSchedule from "./PromptSchedule.js";
 
@@ -13,6 +14,7 @@ function App() {
 
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [showContent, setShowContent] = useState (false);
   const [darkMode, setDarkMode] = useState(false);
   const [activePrompt, setActivePrompt] = useState({});
 
@@ -33,6 +35,7 @@ function App() {
       const promptData = data.val();
       // we will use the below logic but not set it in state
       const promptItems = [];
+<<<<<<< HEAD
       for (let promptKey in promptData) {
         promptItems.push({
           uniqueKey: promptKey,
@@ -41,6 +44,15 @@ function App() {
       }
       console.log(promptItems);
       setPromptArray(promptItems);
+=======
+
+      // for (let promptKey in promptData) {
+      //   promptArray.push({
+      //     uniqueKey: promptKey,
+      //     userPrompt: promptData[promptKey],
+      //   });
+      // }
+>>>>>>> 40e5d9342bfef303d6f9ddefd711f8c45fcbdacb
 
       const randomNumber = Math.floor(Math.random() * promptItems.length);
         const promptArrayCopy = [...promptItems];
@@ -112,6 +124,7 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
+<<<<<<< HEAD
         {
           promptArray.map((item) => {
             if (item.userPrompt.activeDate === activeDateString) {
@@ -121,6 +134,10 @@ function App() {
               }
           })
         }
+=======
+      <WritingTimer />
+      <WritingArea />
+>>>>>>> 40e5d9342bfef303d6f9ddefd711f8c45fcbdacb
       <div className="modeSwitchWrap">
         <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
@@ -130,14 +147,13 @@ function App() {
             <div className="switchHandle"></div>
           </div>
         </label>
-
-        <WritingTimer />
-        <WritingArea />
-        <UserPrompt
+        <PromptSubmit onShow={() => setShowContent(!showContent)} />
+        {showContent && <UserPrompt
+        // && is shorthand for a ternary minus the else
           submit={handleSubmit}
           change={handleChange}
           input={textInput}
-        />
+        />}
         <Footer />
         {/* <PromptSchedule /> */}
       </div>
