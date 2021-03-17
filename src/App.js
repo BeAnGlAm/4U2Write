@@ -6,12 +6,13 @@ import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
 import IdleTimer from './IdleTimer.js';
 import PromptSubmit from "./PromptSubmit";
+import UserPrompt from "./UserPrompt";
 
 function App() {
 
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
-  const [showContent, setShowContent] = useState (false)
+  const [showContent, setShowContent] = useState (false);
   const [darkMode, setDarkMode] = useState(false);
   
 
@@ -80,6 +81,12 @@ function App() {
           </div>
         </label>
         <PromptSubmit onShow={() => setShowContent(!showContent)} />
+        {showContent && <UserPrompt
+        // && is shorthand for a ternary minus the else
+          submit={handleSubmit}
+          change={handleChange}
+          input={textInput}
+        />}
       </div>
     </div>
   );

@@ -1,12 +1,10 @@
-function PromptButton() {
-  const onClick = () => {
-    console.log('click');
-  }
+function PromptButton({ text, onClick }) {
+
   return <button 
           className="promptButton" 
           onClick={onClick} 
           >
-          Add
+          {text}
           </button>
 }
 
