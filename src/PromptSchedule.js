@@ -1,52 +1,73 @@
 import { useState, useEffect } from 'react';
-// get current UTC
+// // get current UTC
 
-// console.log(currentDay)
-// return something like 0 - 6, 0 represent Sunday
-function PromptSchedule () {
-  const currentDate = new Date();
-// add a day
-currentDate.setDate(currentDate.getDate() - 1);
-console.log(currentDate);
-// if day === day -1, do nothing OR push prompt if not
+// // console.log(currentDay)
+// // return something like 0 - 6, 0 represent Sunday
+// function PromptSchedule () {
+//   const currentDate = new Date();
+// // add a day
+// currentDate.setDate(currentDate.getDate() - 1);
+// console.log(currentDate);
+// // if day === day -1, do nothing OR push prompt if not
 
-}
-
-// Then we can save currentDay to firebase, so that this number is always constant and is always saved somewhere universally.
-
-// ​
-// Whenever user comes to the app and mounts the app
-// we are going to run through these again 
-// const currentDate = new Date();
-// const currentDay = currentDay.getUTCDay();
-// we are also going to grab that property from firebase
-// ... some code that grabs the day we saved from firebase, save it into a variable/state call it savedDay or something
-// then we can compare the currentDay to the savedDay
-// if (currentDay !== savedDay) { 
-//   if the days are different, then that means it's a new day in UTC time. 
-//   update firebase savedDay with the new value
-//   ... code that gets a different prompt
 // }
 
-const [dayState, setDayState] = useState([]);
+// // Then we can save currentDay to firebase, so that this number is always constant and is always saved somewhere universally.
 
-useEffect(() => {
-    const dbRef = firebase.database().ref();
-    dbRef.on("value", (data) => {
-      const promptData = data.val();
-      
-      const promptItems = [];
-      for (let promptKey in promptData) {
-        promptArray.pull({
-          uniqueKey: promptKey,
-          userPrompt: promptData[promptKey],
-        });
-      }
-      setPromptArray(promptData);
-    });
-  }, []);
+// // ​
+// // Whenever user comes to the app and mounts the app
+// // we are going to run through these again 
+// // const currentDate = new Date();
+// // const currentDay = currentDay.getUTCDay();
+// // we are also going to grab that property from firebase
+// // ... some code that grabs the day we saved from firebase, save it into a variable/state call it savedDay or something
+// // then we can compare the currentDay to the savedDay
+// // if (currentDay !== savedDay) { 
+// //   if the days are different, then that means it's a new day in UTC time. 
+// //   update firebase savedDay with the new value
+// //   ... code that gets a different prompt
+// // }
+function PromptSchedule () {
+
+const [dateState, setDateState] = useState([]);
+const todaysDate = new Date();
+const differentDate = new Date("2021-01-01");
+// console.log(todaysDate) 
+
+const practicePrompts = [{
+  prompt: "love",
+  activeDate: todaysDate
+},
+{ 
+  prompt: "spring",
+  activeDate: differentDate
+
+},
+{
+  prompt: "aliens",
+  activeDate: ""
+}];
+
+console.log([practicePrompts].prompt);
+console.log(practicePrompts.prompt)
+
+if (practicePrompts[1].activeDate != todaysDate) {
+  console.log('these dates do not match')
+  practicePrompts[1].activeDate = todaysDate;
+} else {
+  console.log('these dates match')
+  return <p>{practicePrompts[1].prompt}</p>}
 
 
+// useEffect(() => {
+// if (practicePrompts.activeDate === todaysDate)
+// return setDateState(practicePrompts);
+//  else todaysDate = new Date + 1();
+    
+     
+// }, []);
+
+}
 
 export default PromptSchedule;
 

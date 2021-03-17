@@ -13,6 +13,8 @@ function App() {
   useEffect(() => {
     const dbRef = firebase.database().ref();
     dbRef.on("value", (data) => {
+      const todaysDate = new Date();
+      // console.log(todaysDate)      
       // walk through all objects we're getting back from firebase
       // check each one and see if activeDate matches todays date on any of them
       // if it does, this is our active prompt so set in state and display on the page
