@@ -9,6 +9,7 @@ import WritingArea from "./WritingArea.js";
 function App() {
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [showContent, setShowContent] = useState (false)
 
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -45,11 +46,16 @@ function App() {
       <Header />
       <WritingTimer />
       <WritingArea />
-      <UserPrompt
-        submit={handleSubmit}
-        change={handleChange}
-        input={textInput}
-      />
+      <div>
+        <h3>Click here to submit a prompt</h3>
+        <button>Add</button>
+          {showContent && <UserPrompt
+          {/* // && is shorthand for a ternary minus the else */}
+            submit={handleSubmit}
+            change={handleChange}
+            input={textInput}
+          />}
+      </div>
     </div>
   );
 }
