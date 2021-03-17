@@ -1,15 +1,19 @@
 import firebase from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import UserPrompt from "./UserPrompt.js";
 import Header from "./Header.js";
 import WritingTimer from "./WritingTimer"
 import WritingArea from "./WritingArea.js";
+import IdleTimer from './IdleTimer.js';
+import PromptSubmit from "./PromptSubmit";
 
 function App() {
+
   const [promptArray, setPromptArray] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [showContent, setShowContent] = useState (false)
+  const [darkMode, setDarkMode] = useState(false);
+  
 
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -19,15 +23,23 @@ function App() {
 
       const promptItems = [];
 
-      for (let promptKey in promptData) {
-        promptArray.push({
-          uniqueKey: promptKey,
-          userPrompt: promptData[promptKey],
-        });
-      }
+      // for (let promptKey in promptData) {
+      //   promptArray.push({
+      //     uniqueKey: promptKey,
+      //     userPrompt: promptData[promptKey],
+      //   });
+      // }
 
       setPromptArray(promptData);
     });
+
+        // dark mode local storage check
+    const currentTheme = localStorage.getItem('stylesColor');
+    if(currentTheme === 'darkStyles') {
+      setDarkMode(true)
+    } else {
+      setDarkMode(false)
+    }
   }, []);
 
   const handleChange = (event) => {
@@ -41,20 +53,33 @@ function App() {
     setTextInput("");
   };
 
+    //Label onClick for dark mode toggle
+  const handleLabelClick = () => {
+    if (darkMode) {
+      localStorage.setItem('stylesColor', 'lightStyles');
+      setDarkMode(false);
+    } else {
+      localStorage.setItem('stylesColor', 'darkStyles');
+      setDarkMode(true);
+    }
+  }
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
+      <IdleTimer />
       <Header />
       <WritingTimer />
       <WritingArea />
-      <div>
-        <h3>Click here to submit a prompt</h3>
-        <button>Add</button>
-          {showContent && <UserPrompt
-          {/* // && is shorthand for a ternary minus the else */}
-            submit={handleSubmit}
-            change={handleChange}
-            input={textInput}
-          />}
+      <div className="modeSwitchWrap">
+        <label 
+          className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
+          onClick={handleLabelClick}
+        >
+          <div className="switchPath">
+            <div className="switchHandle"></div>
+          </div>
+        </label>
+        <PromptSubmit onShow={() => setShowContent(!showContent)} />
       </div>
     </div>
   );
