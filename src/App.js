@@ -135,19 +135,21 @@ function App() {
       <div className="promptFlex wrapper">
         <div className="promptBox">
           <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
-          {showPrompt &&<>
-            {
-              promptArray.map((item) => {
-                if (item.userPrompt.activeDate === activeDateString) {
-                  return(
-                    <h2 className="activePrompt" key={item.uniqueKey}>
-                      {item.userPrompt.prompt}
-                    </h2>
-                    )
-                }
-              })
-            }
-          </>}
+          {showPrompt &&
+            <>
+              {
+                promptArray.map((item) => {
+                  if (item.userPrompt.activeDate === activeDateString) {
+                    return(
+                      <h2 className="activePrompt" key={item.uniqueKey}>
+                        {item.userPrompt.prompt}
+                      </h2>
+                      )
+                  }
+                })
+              }
+            </>
+          }
         </div>
         <WritingTimer />
       </div>
