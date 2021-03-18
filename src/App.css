@@ -283,8 +283,6 @@ a {
 
 .promptButton:active {
   color: #78CAD2;
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
 }
 
 .modeSwitchWrap {
@@ -316,20 +314,23 @@ a {
   transition: all 0.15s ease-in-out;
 }
 
-.modeSwitchWrap .modeSwitchLabel:active .switchPath, .modeSwitchWrap .modeSwitchLabel:focus .switchPath {
+.modeSwitchWrap .modeSwitchLabel.active .switchPath, .modeSwitchWrap .modeSwitchLabel:focus .switchPath {
   background-color: #B2BCCC;
 }
 
-.modeSwitchWrap .modeSwitchLabel:active .switchHandle, .modeSwitchWrap .modeSwitchLabel:focus .switchHandle {
+.modeSwitchWrap .modeSwitchLabel.active .switchHandle, .modeSwitchWrap .modeSwitchLabel:focus .switchHandle {
   -webkit-transform: translateX(20px);
           transform: translateX(20px);
   background-color: #EAE5E9;
 }
 
-.App {
-  height: 100vh;
+body {
   text-align: center;
   background-color: #EAE5E9;
+}
+
+.App {
+  height: 100vh;
 }
 
 .wrapper {
@@ -356,6 +357,7 @@ header {
 
 header p {
   padding-bottom: 20px;
+  margin: 0 auto;
 }
 
 nav {
@@ -368,6 +370,7 @@ nav {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  margin-top: 20px;
 }
 
 .promptFlex {
@@ -402,13 +405,18 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .promptBox h2 {
   margin-left: 20px;
+}
+
+.promptBox .promptButton {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 textarea {
@@ -465,11 +473,11 @@ textarea {
   padding: 3px 8px;
 }
 
-.submitForm button:hover, .submitForm button:focus {
+.submitForm buttonhover, .submitForm button:focus {
   background-color: #B2BCCC;
 }
 
-.submitForm button:active {
+.submitForm button.active {
   position: relative;
   top: 1px;
   left: 1px;
