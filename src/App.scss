@@ -48,12 +48,17 @@ nav {
   padding: 5px;
   font-size: 3rem;
   .timerButtons{
+    cursor: pointer;
     color: $bgDarkMode;
     &:hover,
     &:focus {
       color: $highlightBlue;
     }
   }
+}
+
+.timeDisplay {
+  font-size: 2rem;
 }
 
 .promptBox {
@@ -65,6 +70,10 @@ nav {
   .promptButton {
     transform: rotate(90deg);
   }
+}
+
+.promptButton {
+  cursor: pointer;
 }
 
 textarea {
@@ -106,8 +115,9 @@ textarea {
   button {
     background-color: $heavyPink;
     border: none;
-    border-radius: 5%;
-    padding: 3px 8px;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
     &hover,
     &:focus {
       background-color: $neutralBlue;
@@ -154,6 +164,7 @@ footer {
   .submitForm {
     button {
       background-color: $neutralBlue;
+      padding: 15px;
       &:hover,
       &:focus {
         background-color: $heavyPink;

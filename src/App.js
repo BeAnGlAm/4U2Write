@@ -72,7 +72,7 @@ function App() {
         // console.log(updatedDate);  <--REMOVE
     });
     
-    // dark mode local storage check
+    // Dark Mode local storage check
     const currentTheme = localStorage.getItem('stylesColor');
     if(currentTheme === 'darkStyles') {
       setDarkMode(true)
@@ -105,7 +105,8 @@ function App() {
     setTextInput("");
   };
 
-    //Label onClick for dark mode toggle
+    //Event handler for Dark Mode toggle
+    //
   const handleLabelClick = () => {
     if (darkMode) {
       localStorage.setItem('stylesColor', 'lightStyles');
@@ -163,7 +164,7 @@ function App() {
           change={handleChange}
           input={textInput}
         />}
-        <Footer />
+      <Footer />
     </div>
   );
 }
