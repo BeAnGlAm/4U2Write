@@ -19,7 +19,8 @@
         transition: all 0.15s ease-in-out;
       }
     }
-    &.active {
+    &.active,
+    &:focus {
       .switchPath {
         background-color: $neutralBlue;
       }

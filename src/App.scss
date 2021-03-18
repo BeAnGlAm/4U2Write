@@ -2,9 +2,10 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
+
 .App {
-  height: 100vh;
   text-align: center;
+  height: 100%;  
   background-color: $bgLightMode;
 }
 
@@ -20,15 +21,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  // top: -100px;
-  h1,
-  h3,
-  p {
-    color: white;
-  }
   p{
     padding-bottom: 20px;
+    margin: 0 auto;
   }
 }
 
@@ -36,6 +31,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: 20px;
 }
 
 .promptFlex {
@@ -58,9 +54,12 @@ nav {
 
 .promptBox {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   h2 {
     margin-left: 20px;
+  }
+  .promptButton {
+    transform: rotate(90deg);
   }
 }
 
@@ -71,6 +70,7 @@ textarea {
   height: 30vh;
   padding: 10px;
   font-size: 1.8rem;
+  resize: none;
 }
 
 .promptSubmit {
@@ -85,24 +85,29 @@ textarea {
 .submitForm {
   padding: 20px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   label,
   input,
   button {
     font-size: 1.6rem;
-    margin: 0 10px;
+    margin: 10px 0;
+    color: $bgDarkMode;
+  }
+  input {
+    width: 50%;
   }
   button {
     background-color: $heavyPink;
     border: none;
     border-radius: 5%;
     padding: 3px 8px;
-    &:hover,
+    &hover,
     &:focus {
-      background-color: $highlightBlue;
+      background-color: $neutralBlue;
     }
-    &:active {
+    &.active {
       position: relative;
       top: 1px;
       left: 1px;
@@ -112,7 +117,7 @@ textarea {
 
 footer {
   background-color: $heavyPink;
-  color: white;
+  color: $bgDarkMode;
   .footerFlex {
     display: flex;
     justify-content: space-between;
@@ -123,11 +128,43 @@ footer {
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;
+  header,
+  footer {
+  background-color: $bgLightMode;
+    .promptButton {
+      color: $bgDarkMode;
+    }
+  }
   h2 {
     color: white;
   }
   .timeSetFlexContainer,
   .timerButtons {
     color: white;
+  }
+  .submitForm {
+    button {
+      background-color: $neutralBlue;
+      &:hover,
+      &:focus {
+        background-color: $heavyPink;
+      }
+    }
+    label,
+    input {
+      color: white;
+    }
+  }
+  .promptSubmit {
+    h3 {
+      color: white;
+    }
+  }
+  .promptButton {
+    color: white;
+    &:hover,
+    &:focus {
+      color: $highlightBlue;
+    }
   }
 }
