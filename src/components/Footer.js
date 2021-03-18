@@ -4,6 +4,13 @@ function Footer() {
   return (
     <footer>
       <div className="footerFlex wrapper">
+<<<<<<< HEAD
+        <p>Created by BeAnGlAm @ <a href="https://junocollege.com">Juno College</a></p>
+        <p>Amy Bradford | Andrew Campbell | Bea Duncan | Glen San Jose</p>
+      </div>
+    </footer>
+  )
+=======
         <p>
           Created by BeAnGlAm @{" "}
           <a href="https://junocollege.com">Juno College</a>
@@ -18,6 +25,7 @@ function Footer() {
       </div>
     </footer>
   );
+>>>>>>> e684f40089c61e98f209a304dcdb0d8ff895ae60
 }
 
 export default Footer;
