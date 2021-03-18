@@ -235,15 +235,47 @@ h2,
 h3,
 h4 {
   font-family: "Josefin Sans", sans-serif;
+  margin: 0;
 }
 
 p {
   font-family: "Lato", sans-serif;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+  color: #23395B;
+}
+
+h3 {
+  font-size: 2.25rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.promptButton {
+  font-size: 4rem;
+}
+
 .modeSwitchWrap {
   width: 100%;
   text-align: right;
+  padding: 15px;
 }
 
 .modeSwitchWrap .modeSwitchLabel {
@@ -286,11 +318,14 @@ p {
 }
 
 .wrapper {
-  width: 90%;
+  width: 80%;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 header {
+  background-color: #CEA7C8;
+  padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -301,21 +336,162 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+}
+
+header h1,
+header h3,
+header p {
+  color: white;
+}
+
+header p {
+  padding-bottom: 20px;
 }
 
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
 }
 
+.promptFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.timeSetFlexContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timeSetFlexContainer,
+.timerButtons {
+  padding: 5px;
+  font-size: 3rem;
+  color: #23395B;
+}
+
+.promptBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.promptBox h2 {
+  margin-left: 20px;
+}
+
+textarea {
+  border-style: hidden;
+  margin: 20px 0 40px 0;
+  width: 70%;
+  height: 30vh;
+  padding: 10px;
+  font-size: 1.8rem;
+}
+
+.promptSubmit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.promptSubmit h3 {
+  margin-right: 20px;
+}
+
+.submitForm {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.submitForm label,
+.submitForm input,
+.submitForm button {
+  font-size: 1.6rem;
+  margin: 0 10px;
+}
+
+.submitForm button {
+  background-color: #CEA7C8;
+  border: none;
+  border-radius: 5%;
+  padding: 3px 8px;
+}
+
+.submitForm button:hover, .submitForm button:focus {
+  background-color: #78CAD2;
+}
+
+.submitForm button:active {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
+footer {
+  background-color: #CEA7C8;
+  color: white;
+}
+
+footer .footerFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .App.darkStyles {
   background-color: #23395B;
+  color: white;
+}
+
+.App.darkStyles h2 {
+  color: white;
+}
+
+.App.darkStyles .timeSetFlexContainer,
+.App.darkStyles .timerButtons {
   color: white;
 }
 /*# sourceMappingURL=App.css.map */

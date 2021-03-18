@@ -1,6 +1,6 @@
 function UserPrompt({ submit, change, input }) {
    return (
-      <form action="" onSubmit={submit}>
+      <form className="submitForm" action="" onSubmit={submit}>
          <label htmlFor="promptSubmit">
             Submit a writing prompt of your own!
          </label>

@@ -62,16 +62,16 @@ function WritingTimer() {
     <div className="writingTimer">
       <div className="writingTimerContainer">
         <div className="timeSetFlexContainer">
-          <AiOutlineMinusSquare onClick={decreaseTime} />
           {/* DISPLAY THE TIME */}
           <div className="timeDisplay">{convertedTime()}</div>
           <AiOutlinePlusSquare onClick={increaseTime} />
+          <AiOutlineMinusSquare onClick={decreaseTime} />
         </div>
         {/* START / PAUSE BUTTONS */}
         <div className="timerButtons">
           <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} aria-label="start timer"/>
           <BiPauseCircle hidden={!disableStartTimer} onClick={pauseTimer} aria-label="pause timer"/>
-          <BiStopCircle onClick={resetTimer} aria-label="stop and reset timee"/>
+          <BiStopCircle onClick={resetTimer} aria-label="stop and reset timer"/>
         </div>
       </div>
     </div>

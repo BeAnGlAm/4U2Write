@@ -9,23 +9,125 @@
 }
 
 .wrapper {
-  width: 90%;
+  width: 80%;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 header {
+  background-color: $heavyPink;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  // top: -100px;
+  h1,
+  h3,
+  p {
+    color: white;
+  }
+  p{
+    padding-bottom: 20px;
+  }
 }
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
+}
+
+.promptFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.timeSetFlexContainer {
+  display: flex;
+  align-items: center;
+}
+
+.timeSetFlexContainer,
+.timerButtons {
+  padding: 5px;
+  font-size: 3rem;
+  color: $bgDarkMode;
+}
+
+.promptBox {
+  display: flex;
+  align-items: center;
+  h2 {
+    margin-left: 20px;
+  }
+}
+
+textarea {
+  border-style: hidden;
+  margin: 20px 0 40px 0;
+  width: 70%;
+  height: 30vh;
+  padding: 10px;
+  font-size: 1.8rem;
+}
+
+.promptSubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    margin-right: 20px;
+  }
+}
+
+.submitForm {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  label,
+  input,
+  button {
+    font-size: 1.6rem;
+    margin: 0 10px;
+  }
+  button {
+    background-color: $heavyPink;
+    border: none;
+    border-radius: 5%;
+    padding: 3px 8px;
+    &:hover,
+    &:focus {
+      background-color: $highlightBlue;
+    }
+    &:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+    }
+  }
+}
+
+footer {
+  background-color: $heavyPink;
+  color: white;
+  .footerFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;
+  h2 {
+    color: white;
+  }
+  .timeSetFlexContainer,
+  .timerButtons {
+    color: white;
+  }
 }
