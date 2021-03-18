@@ -1,33 +1,27 @@
 import { useIdleTimer } from "react-idle-timer";
+import { useState } from 'react';
 
 function IdleTimer() {
 
-  const handleOnIdle = () => {
-    if (isIdle()) {
-        console.log('user is idle')
-    };
-  }
+   const [userIdle, setUserIdle] = useState(false);
 
-  const {isIdle} = useIdleTimer({
-    timeout: 1000 * 15,
-    onIdle: handleOnIdle,
-    debounce: 500
-  })
+   const handleOnIdle = () => {
+      if (isIdle()) {
+         setUserIdle(!userIdle)
+      };
+   }
 
-  const idleWarning = () => {
-    if (isIdle) {
-      return (
-      <p>It's been 15 seconds</p>
-      )
-    }
-  }
+   const {isIdle} = useIdleTimer({
+      timeout: 1000 * 15,
+      onIdle: handleOnIdle,
+      debounce: 500
+   })
 
-  return (
-    <div>
-        {/* app here */}
-        {idleWarning()}
-    </div>
-  )
+   return (
+      <div>
+         <p className={userIdle ? 'userWriting' : 'userIsIdle' }></p>
+      </div>
+   )
 }
 
 export default IdleTimer;
