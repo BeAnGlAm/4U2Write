@@ -50,6 +50,12 @@ function WritingTimer() {
     setTimer(timer + 300);
   };
 
+  const timesUp = () => {
+    if (timer === 0) {
+      console.log('times up')
+    }
+  }
+
   //display time as minutes : seconds
   const convertedTime = () => {
     const seconds = `0${timer % 60}`.slice(-2);
@@ -63,15 +69,15 @@ function WritingTimer() {
       <div className="writingTimerContainer">
         <div className="timeSetFlexContainer">
           {/* DISPLAY THE TIME */}
-          <div className="timeDisplay">{convertedTime()}</div>
-          <AiOutlinePlusSquare onClick={increaseTime} />
-          <AiOutlineMinusSquare onClick={decreaseTime} />
+          <AiOutlineMinusSquare title="decrease goal time by five minutes" onClick={decreaseTime} />
+          <AiOutlinePlusSquare title="increase goal time by five minutes" onClick={increaseTime} />
         </div>
+        <div className="timeDisplay">{convertedTime()}</div>
         {/* START / PAUSE BUTTONS */}
         <div className="timerButtons">
-          <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} aria-label="start timer"/>
-          <BiPauseCircle hidden={!disableStartTimer} onClick={pauseTimer} aria-label="pause timer"/>
-          <BiStopCircle onClick={resetTimer} aria-label="stop and reset timer"/>
+          <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>
+          <BiPauseCircle hidden={!disableStartTimer} onClick={pauseTimer} title="pause the timer"/>
+          <BiStopCircle onClick={resetTimer} title="stop and reset the timer"/>
         </div>
       </div>
     </div>
