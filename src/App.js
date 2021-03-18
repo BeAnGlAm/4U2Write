@@ -10,6 +10,8 @@ import PromptSubmit from "./components/PromptSubmit";
 import UserPrompt from "./components/UserPrompt";
 import Footer from './components/Footer.js';
 
+import Swal from 'sweetalert2';  // can potentially be moved with handleSubmit and handleChange later? 
+
 function App() {
 
   const [promptArray, setPromptArray] = useState([]);
@@ -22,12 +24,6 @@ function App() {
   useEffect(() => {
     const dbRef = firebase.database().ref();
     dbRef.on("value", (data) => {
-      // const todaysDate = new Date();
-      // const activeDate = todaysDate.getDate();
-      // const activeMonth = todaysDate.getMonth();
-      // const activeDateString = `${activeDate}-${activeMonth}`;
-      console.log(activeDateString);
-      // console.log(todaysDate)      
       // walk through all objects we're getting back from firebase
       // check each one and see if activeDate matches todays date on any of them
       // if it does, this is our active prompt so set in state and display on the page
@@ -42,15 +38,7 @@ function App() {
           userPrompt: promptData[promptKey],
         });
       }
-      // console.log(promptItems);   <--REMOVE
       setPromptArray(promptItems);
-
-      // for (let promptKey in promptData) {
-      //   promptArray.push({
-      //     uniqueKey: promptKey,
-      //     userPrompt: promptData[promptKey],
-      //   });
-      // }
 
       const randomNumber = Math.floor(Math.random() * promptItems.length);
         const promptArrayCopy = [...promptItems];
@@ -60,11 +48,7 @@ function App() {
         if (activeItem.length === 0) {
           let randomDate = promptArrayCopy[randomNumber];
           let dateKey = randomDate.uniqueKey;
-          let datePrompt = randomDate.userPrompt.prompt;
           let updatedDate = randomDate.userPrompt.activeDate = activeDateString;
-          // console.log(randomDate);  <--REMOVE
-          // console.log(updatedDate);  <--REMOVE
-          // console.log(dateKey);  <--REMOVE
 
           const dbRef = firebase.database().ref();
           dbRef.child(dateKey).update({
@@ -95,10 +79,18 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const dbRef = firebase.database().ref();
-    dbRef.push({
-      prompt: textInput,
-      activeDate: 0
-    });
+    if (textInput) {
+      dbRef.push({
+        prompt: textInput,
+        activeDate: 0
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter a valid prompt!'
+      })
+    }
     setTextInput("");
   };
 
@@ -116,8 +108,6 @@ function App() {
   const activeDate = todaysDate.getDate();
   const activeMonth = todaysDate.getMonth();
   const activeDateString = `${activeDate}-${activeMonth}`;
-  // console.log(activeDateString);  <--REMOVE
-  // console.log(promptArray);   <--REMOVE
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
