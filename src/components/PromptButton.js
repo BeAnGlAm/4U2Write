@@ -1,11 +1,14 @@
-function PromptButton({ text, onClick }) {
+import { HiChevronDown } from "react-icons/hi";
 
-  return <button 
-          className="promptButton" 
-          onClick={onClick} 
-          >
-          {text}
-          </button>
+function PromptButton({ onClick }) {
+
+  return (
+    <HiChevronDown 
+    className="promptButton"
+    onClick={onClick} 
+    aria-label="hide reveal button"
+    />
+  )
 }
 
 export default PromptButton

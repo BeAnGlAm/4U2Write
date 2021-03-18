@@ -123,21 +123,7 @@ function App() {
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
       <IdleTimer />
       <Header />
-      <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
-        {showPrompt &&<>
-          {
-            promptArray.map((item) => {
-              if (item.userPrompt.activeDate === activeDateString) {
-                return(
-                  <h2>{item.userPrompt.prompt}</h2>
-                  )
-                }
-              })
-            }
-        </>}
-      <WritingTimer />
-      <WritingArea />
-      <div className="modeSwitchWrap">
+      <div className="modeSwitchWrap wrapper">
         <label 
           className={`modeSwitchLabel ${darkMode ? 'active' : ''}`} 
           onClick={handleLabelClick}
@@ -147,6 +133,24 @@ function App() {
           </div>
         </label>
       </div>
+      <div className="promptFlex wrapper">
+        <div className="promptBox">
+          <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
+          {showPrompt &&<>
+            {
+              promptArray.map((item) => {
+                if (item.userPrompt.activeDate === activeDateString) {
+                  return(
+                    <h2>{item.userPrompt.prompt}</h2>
+                    )
+                  }
+                })
+              }
+          </>}
+        </div>
+        <WritingTimer />
+      </div>
+      <WritingArea />
         {/* <PromptSchedule /> */}
         <PromptSubmit onShow={() => setShowContent(!showContent)} />
         {showContent && <UserPrompt
