@@ -2,9 +2,10 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
+
 .App {
-  height: 100vh;
   text-align: center;
+  height: 100%;  
   background-color: $bgLightMode;
 }
 
@@ -20,10 +21,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  // top: -100px;
   p{
     padding-bottom: 20px;
+    margin: 0 auto;
   }
 }
 
@@ -31,6 +31,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: 20px;
 }
 
 .promptFlex {
@@ -53,9 +54,12 @@ nav {
 
 .promptBox {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   h2 {
     margin-left: 20px;
+  }
+  .promptButton {
+    transform: rotate(90deg);
   }
 }
 
@@ -81,25 +85,29 @@ textarea {
 .submitForm {
   padding: 20px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   label,
   input,
   button {
     font-size: 1.6rem;
-    margin: 0 10px;
+    margin: 10px 0;
     color: $bgDarkMode;
+  }
+  input {
+    width: 50%;
   }
   button {
     background-color: $heavyPink;
     border: none;
     border-radius: 5%;
     padding: 3px 8px;
-    &:hover,
+    &hover,
     &:focus {
       background-color: $neutralBlue;
     }
-    &:active {
+    &.active {
       position: relative;
       top: 1px;
       left: 1px;
@@ -123,6 +131,9 @@ footer {
   header,
   footer {
   background-color: $bgLightMode;
+    .promptButton {
+      color: $bgDarkMode;
+    }
   }
   h2 {
     color: white;
@@ -147,6 +158,13 @@ footer {
   .promptSubmit {
     h3 {
       color: white;
+    }
+  }
+  .promptButton {
+    color: white;
+    &:hover,
+    &:focus {
+      color: $highlightBlue;
     }
   }
 }
