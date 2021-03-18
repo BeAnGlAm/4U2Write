@@ -42,7 +42,7 @@ function Header() {
           <h1>Write On</h1>
           <div>
             <h3>Learn more</h3>
-            {/* Arrow icon */}
+            <PromptButton />
           </div>
         </nav>
       </div>
