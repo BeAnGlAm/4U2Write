@@ -1,7 +1,5 @@
-// This component holds the header content & show & hide content function.
-
-import { useState } from "react";
-import PromptButton from "./PromptButton"
+import { useState } from 'react';
+import PromptButton from './PromptButton';
 
 function Header() {
   const [headerHidden, setHeaderHidden] = useState(false);
