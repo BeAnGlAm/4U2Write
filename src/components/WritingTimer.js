@@ -82,10 +82,10 @@ function WritingTimer() {
         {/* DISPLAY THE TIME */}
         <div>{timesUp()}</div>
         {/* START / PAUSE BUTTONS */}
-        <div className="timerButtons">
-          <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>
-          <BiPauseCircle hidden={!disableStartTimer} onClick={pauseTimer} title="pause the timer"/>
-          <BiStopCircle onClick={resetTimer} title="stop and reset the timer"/>
+        <div className="timerButtonContainer">
+          <BiPlayCircle className="timerButtons" hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>
+          <BiPauseCircle className="timerButtons" hidden={!disableStartTimer} onClick={pauseTimer} title="pause the timer"/>
+          <BiStopCircle className="timerButtons" onClick={resetTimer} title="stop and reset the timer"/>
         </div>
       </div>
     </div>

@@ -6,11 +6,11 @@ function Header() {
   const [headerHidden, setHeaderHidden] = useState(false);
 
   const showFull = () => {
-    setHeaderHidden(!showFull);
+    setHeaderHidden(!headerHidden);
   };
 
   return (
-    <header className={showFull ? "header-full" : "header-hidden"}>
+    <header className={headerHidden ? "header-full" : "header-hidden"}>
       <div className="wrapper">
         <p>Welcome to Write On.</p>
         <p>

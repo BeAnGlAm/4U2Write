@@ -46,10 +46,16 @@ nav {
 }
 
 .timeSetFlexContainer,
-.timerButtons {
+.timerButtonContainer {
   padding: 5px;
   font-size: 3rem;
-  color: $bgDarkMode;
+  .timerButtons{
+    color: $bgDarkMode;
+    &:hover,
+    &:focus {
+      color: $highlightBlue;
+    }
+  }
 }
 
 .promptBox {
@@ -77,6 +83,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: ease-in-out;
   h3 {
     margin-right: 20px;
   }
@@ -139,8 +146,14 @@ footer {
     color: white;
   }
   .timeSetFlexContainer,
-  .timerButtons {
-    color: white;
+  .timerButtonContainer {
+    .timerButtons{
+      color: white;
+      &:hover,
+      &:focus {
+        color: $highlightBlue;
+      }
+    }
   }
   .submitForm {
     button {
