@@ -69,16 +69,16 @@ function WritingTimer() {
       <div className="writingTimerContainer">
         <div className="timeSetFlexContainer">
           {/* DISPLAY THE TIME */}
-          <AiOutlineMinusSquare title="decrease goal time by five minutes" onClick={decreaseTime} />
-          <AiOutlinePlusSquare title="increase goal time by five minutes" onClick={increaseTime} />
+          <AiOutlineMinusSquare className="timerButtons" title="decrease goal time by five minutes" onClick={decreaseTime} />
+          <AiOutlinePlusSquare className="timerButtons" title="increase goal time by five minutes" onClick={increaseTime} />
         </div>
         <div role="timer" className="timeDisplay">{convertedTime()}</div>
         <div>{timesUp()}</div>
         {/* START / PAUSE BUTTONS */}
-        <div className="timerButtons">
-          <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>
-          <BiPauseCircle hidden={!disableStartTimer} onClick={pauseTimer} title="pause the timer"/>
-          <BiStopCircle onClick={resetTimer} title="stop and reset the timer"/>
+        <div className="timerButtonContainer">
+          <BiPlayCircle className="timerButtons" hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>
+          <BiPauseCircle className="timerButtons" hidden={!disableStartTimer} onClick={pauseTimer} title="pause the timer"/>
+          <BiStopCircle className="timerButtons" onClick={resetTimer} title="stop and reset the timer"/>
         </div>
       </div>
     </div>
