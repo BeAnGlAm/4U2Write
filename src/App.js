@@ -19,7 +19,7 @@ function App() {
   const [showPrompt, setShowPrompt] = useState(true);
   const [showContent, setShowContent] = useState (false);
   const [darkMode, setDarkMode] = useState(false);
-  const [activePrompt, setActivePrompt] = useState({});
+  // const [activePrompt, setActivePrompt] = useState({});
 
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -40,6 +40,17 @@ function App() {
       }
       setPromptArray(promptItems);
 
+      const todaysDate = new Date();
+      const activeDateString = todaysDate.toDateString();
+
+      const yesterdaysDate = todaysDate;
+      yesterdaysDate.setDate(todaysDate.getDate() - 1);
+      const yesterday = yesterdaysDate.toDateString();
+
+      const threeDaysPast = todaysDate;
+      threeDaysPast.setDate(todaysDate.getDate() - 2)
+      const threeDaysAgo = threeDaysPast.toDateString();
+
       const randomNumber = Math.floor(Math.random() * promptItems.length);
         const promptArrayCopy = [...promptItems];
         const activeItem = promptArrayCopy.filter((item) => {
@@ -47,16 +58,16 @@ function App() {
         })
         if (activeItem.length === 0) {
           let randomDate = promptArrayCopy[randomNumber];
-          let dateKey = randomDate.uniqueKey;
-          let updatedDate = randomDate.userPrompt.activeDate = activeDateString;
 
-          const dbRef = firebase.database().ref();
-          dbRef.child(dateKey).update({
-            activeDate: updatedDate
-          })
+          if ( randomDate.userPrompt.activeDate !== yesterday && randomDate.userPrompt.activeDate !== threeDaysAgo) {
+            let dateKey = randomDate.uniqueKey;
+            let updatedDate = activeDateString;
+            const dbRef = firebase.database().ref();
+            dbRef.child(dateKey).update({
+              activeDate: updatedDate
+            })
+          }
           // pick random prompt and update prompts active date to be todays date << tricky! firebase has update method, unique key is important
-        } else {
-          setActivePrompt(activeItem[0]);
         }
         // console.log(updatedDate);  <--REMOVE
     });
@@ -104,10 +115,9 @@ function App() {
       setDarkMode(true);
     }
   }
+
   const todaysDate = new Date();
-  const activeDate = todaysDate.getDate();
-  const activeMonth = todaysDate.getMonth();
-  const activeDateString = `${activeDate}-${activeMonth}`;
+  const activeDateString = todaysDate.toDateString();
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
@@ -131,11 +141,13 @@ function App() {
               promptArray.map((item) => {
                 if (item.userPrompt.activeDate === activeDateString) {
                   return(
-                    <h2>{item.userPrompt.prompt}</h2>
+                    <h2 className="activePrompt" key={item.uniqueKey}>
+                      {item.userPrompt.prompt}
+                    </h2>
                     )
-                  }
-                })
-              }
+                }
+              })
+            }
           </>}
         </div>
         <WritingTimer />
