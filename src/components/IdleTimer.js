@@ -14,9 +14,18 @@ function IdleTimer() {
     debounce: 500
   })
 
+  const idleWarning = () => {
+    if (isIdle) {
+      return (
+      <p>It's been 15 seconds</p>
+      )
+    }
+  }
+
   return (
     <div>
         {/* app here */}
+        {idleWarning()}
     </div>
   )
 }
