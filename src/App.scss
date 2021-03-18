@@ -2,7 +2,6 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
-
 .App {
   text-align: center;
   height: 100%;  
@@ -44,7 +43,6 @@ nav {
   display: flex;
   align-items: center;
 }
-
 .timeSetFlexContainer,
 .timerButtonContainer {
   padding: 5px;
@@ -121,7 +119,6 @@ textarea {
     }
   }
 }
-
 footer {
   background-color: $heavyPink;
   color: $bgDarkMode;
@@ -131,7 +128,6 @@ footer {
     align-items: center;
   }
 }
-
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;

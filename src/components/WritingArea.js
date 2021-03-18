@@ -1,3 +1,5 @@
+// This component holds the writing area function which provides a textarea to render onto the page
+
 function WritingArea() {
   return(
     <form action="">
