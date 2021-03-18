@@ -5,7 +5,9 @@ function Footer() {
     <footer>
       <div className="footerFlex wrapper">
         <p>
-          Created by BeAnGlAm @{" "}
+          Created by {" "}
+          <a href="https://github.com/BeAnGlAm">BeAnGlAm</a> @
+          {" "}
           <a href="https://junocollege.com">Juno College</a>
         </p>
         <p>
