@@ -2,13 +2,11 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
-body {
-  text-align: center;
-  background-color: $bgLightMode;
-}
 
 .App {
-  height: 100vh;
+  text-align: center;
+  height: 100%;  
+  background-color: $bgLightMode;
 }
 
 .wrapper {
@@ -23,8 +21,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  // top: -100px;
   p{
     padding-bottom: 20px;
     margin: 0 auto;
@@ -89,14 +85,18 @@ textarea {
 .submitForm {
   padding: 20px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   label,
   input,
   button {
     font-size: 1.6rem;
-    margin: 0 10px;
+    margin: 10px 0;
     color: $bgDarkMode;
+  }
+  input {
+    width: 50%;
   }
   button {
     background-color: $heavyPink;
@@ -131,6 +131,9 @@ footer {
   header,
   footer {
   background-color: $bgLightMode;
+    .promptButton {
+      color: $bgDarkMode;
+    }
   }
   h2 {
     color: white;
@@ -155,6 +158,13 @@ footer {
   .promptSubmit {
     h3 {
       color: white;
+    }
+  }
+  .promptButton {
+    color: white;
+    &:hover,
+    &:focus {
+      color: $highlightBlue;
     }
   }
 }

@@ -281,10 +281,6 @@ a {
   color: #78CAD2;
 }
 
-.promptButton:active {
-  color: #78CAD2;
-}
-
 .modeSwitchWrap {
   width: 100%;
   text-align: right;
@@ -324,13 +320,10 @@ a {
   background-color: #EAE5E9;
 }
 
-body {
-  text-align: center;
-  background-color: #EAE5E9;
-}
-
 .App {
-  height: 100vh;
+  text-align: center;
+  height: 100%;
+  background-color: #EAE5E9;
 }
 
 .wrapper {
@@ -352,7 +345,6 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
 }
 
 header p {
@@ -450,6 +442,10 @@ textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -462,8 +458,12 @@ textarea {
 .submitForm input,
 .submitForm button {
   font-size: 1.6rem;
-  margin: 0 10px;
+  margin: 10px 0;
   color: #23395B;
+}
+
+.submitForm input {
+  width: 50%;
 }
 
 .submitForm button {
@@ -510,6 +510,11 @@ footer .footerFlex {
   background-color: #EAE5E9;
 }
 
+.App.darkStyles header .promptButton,
+.App.darkStyles footer .promptButton {
+  color: #23395B;
+}
+
 .App.darkStyles h2 {
   color: white;
 }
@@ -534,5 +539,13 @@ footer .footerFlex {
 
 .App.darkStyles .promptSubmit h3 {
   color: white;
+}
+
+.App.darkStyles .promptButton {
+  color: white;
+}
+
+.App.darkStyles .promptButton:hover, .App.darkStyles .promptButton:focus {
+  color: #78CAD2;
 }
 /*# sourceMappingURL=App.css.map */
