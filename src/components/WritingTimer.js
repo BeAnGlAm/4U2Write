@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { BiPauseCircle, BiPlayCircle, BiStopCircle } from "react-icons/bi";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import Swal from 'sweetalert2';
 
 function WritingTimer() {
   const [timer, setTimer] = useState(20 * 60);
@@ -48,11 +49,16 @@ function WritingTimer() {
     setTimer(timer + 300);
   };
 
+  //Alerts the user when they have met their time goal
   const timesUp = () => {
-    if (timer === 0) {
-      return (
-      <p>Times up</p>
-      )
+    if (timer < 1) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Congrats! You met your time goal!',
+          showConfirmButton: false,
+          timer: 1500
+        })
     }
   }
 
@@ -67,12 +73,13 @@ function WritingTimer() {
   return (
     <div className="writingTimer">
       <div className="writingTimerContainer">
+        {/* SET TIMER + / - BUTTONS */}
         <div className="timeSetFlexContainer">
-          {/* DISPLAY THE TIME */}
           <AiOutlineMinusSquare title="decrease goal time by five minutes" onClick={decreaseTime} />
           <AiOutlinePlusSquare title="increase goal time by five minutes" onClick={increaseTime} />
         </div>
         <div role="timer" className="timeDisplay">{convertedTime()}</div>
+        {/* DISPLAY THE TIME */}
         <div>{timesUp()}</div>
         {/* START / PAUSE BUTTONS */}
         <div className="timerButtons">

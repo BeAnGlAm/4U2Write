@@ -121,6 +121,7 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
+      <IdleTimer />
       <Header />
       <div className="modeSwitchWrap wrapper">
         <label 
@@ -149,7 +150,6 @@ function App() {
         </div>
         <WritingTimer />
       </div>
-      <IdleTimer />
       <WritingArea />
         {/* <PromptSchedule /> */}
         <PromptSubmit onShow={() => setShowContent(!showContent)} />

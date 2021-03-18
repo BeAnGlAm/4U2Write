@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import PromptButton from './PromptButton';
+// This component holds the header content & show & hide content function.
+
+import { useState } from "react";
 
 function Header() {
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -42,7 +43,7 @@ function Header() {
           <h1>Write On</h1>
           <div>
             <h3>Learn more</h3>
-            <PromptButton />
+            {/* Arrow icon */}
           </div>
         </nav>
       </div>
