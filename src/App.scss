@@ -22,11 +22,6 @@ header {
   align-items: center;
   position: relative;
   // top: -100px;
-  h1,
-  h3,
-  p {
-    color: white;
-  }
   p{
     padding-bottom: 20px;
   }
@@ -71,6 +66,7 @@ textarea {
   height: 30vh;
   padding: 10px;
   font-size: 1.8rem;
+  resize: none;
 }
 
 .promptSubmit {
@@ -92,6 +88,7 @@ textarea {
   button {
     font-size: 1.6rem;
     margin: 0 10px;
+    color: $bgDarkMode;
   }
   button {
     background-color: $heavyPink;
@@ -100,7 +97,7 @@ textarea {
     padding: 3px 8px;
     &:hover,
     &:focus {
-      background-color: $highlightBlue;
+      background-color: $neutralBlue;
     }
     &:active {
       position: relative;
@@ -112,7 +109,7 @@ textarea {
 
 footer {
   background-color: $heavyPink;
-  color: white;
+  color: $bgDarkMode;
   .footerFlex {
     display: flex;
     justify-content: space-between;
@@ -123,11 +120,33 @@ footer {
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;
+  header,
+  footer {
+  background-color: $bgLightMode;
+  }
   h2 {
     color: white;
   }
   .timeSetFlexContainer,
   .timerButtons {
     color: white;
+  }
+  .submitForm {
+    button {
+      background-color: $neutralBlue;
+      &:hover,
+      &:focus {
+        background-color: $heavyPink;
+      }
+    }
+    label,
+    input {
+      color: white;
+    }
+  }
+  .promptSubmit {
+    h3 {
+      color: white;
+    }
   }
 }

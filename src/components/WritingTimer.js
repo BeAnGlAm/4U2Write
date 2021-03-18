@@ -23,7 +23,6 @@ function WritingTimer() {
     timeReference.current = setInterval(() => {
       setTimer((timer) => timer - 1);
     }, 1000);
-    // }
   };
 
   //pause the timer and disable the pause button
@@ -49,12 +48,13 @@ function WritingTimer() {
     setTimer(timer + 300);
   };
 
-  // const timesUp = () => {
-  //   if (timer === 0) {
-  //     return (
-  //       'You met your goal!'
-  //     )
-  //   }
+  const timesUp = () => {
+    if (timer === 0) {
+      return (
+      <p>Times up</p>
+      )
+    }
+  }
 
   //display time as minutes : seconds
   const convertedTime = () => {
@@ -72,8 +72,8 @@ function WritingTimer() {
           <AiOutlineMinusSquare title="decrease goal time by five minutes" onClick={decreaseTime} />
           <AiOutlinePlusSquare title="increase goal time by five minutes" onClick={increaseTime} />
         </div>
-        <div className="timeDisplay">{convertedTime()}</div>
-        {/* <div>{timesUp()}</div> */}
+        <div role="timer" className="timeDisplay">{convertedTime()}</div>
+        <div>{timesUp()}</div>
         {/* START / PAUSE BUTTONS */}
         <div className="timerButtons">
           <BiPlayCircle hidden={disableStartTimer} onClick={startTimer} title="start the timer"/>

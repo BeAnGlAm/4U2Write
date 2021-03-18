@@ -236,10 +236,12 @@ h3,
 h4 {
   font-family: "Josefin Sans", sans-serif;
   margin: 0;
+  color: #23395B;
 }
 
 p {
   font-family: "Lato", sans-serif;
+  color: #23395B;
 }
 
 h1 {
@@ -265,11 +267,24 @@ p {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #23395B;
 }
 
 .promptButton {
   font-size: 4rem;
+  color: #23395B;
+  -webkit-transition: all ease-in-out 0.15s;
+  transition: all ease-in-out 0.15s;
+}
+
+.promptButton:hover, .promptButton:focus {
+  color: #78CAD2;
+}
+
+.promptButton:active {
+  color: #78CAD2;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 .modeSwitchWrap {
@@ -287,7 +302,7 @@ a {
   width: 40px;
   height: 20px;
   border-radius: 10px;
-  background-color: #CEA7C8;
+  background-color: #EAD6E7;
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
@@ -301,11 +316,11 @@ a {
   transition: all 0.15s ease-in-out;
 }
 
-.modeSwitchWrap .modeSwitchLabel.active .switchPath {
+.modeSwitchWrap .modeSwitchLabel:active .switchPath, .modeSwitchWrap .modeSwitchLabel:focus .switchPath {
   background-color: #B2BCCC;
 }
 
-.modeSwitchWrap .modeSwitchLabel.active .switchHandle {
+.modeSwitchWrap .modeSwitchLabel:active .switchHandle, .modeSwitchWrap .modeSwitchLabel:focus .switchHandle {
   -webkit-transform: translateX(20px);
           transform: translateX(20px);
   background-color: #EAE5E9;
@@ -324,7 +339,7 @@ a {
 }
 
 header {
-  background-color: #CEA7C8;
+  background-color: #EAD6E7;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -337,12 +352,6 @@ header {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-}
-
-header h1,
-header h3,
-header p {
-  color: white;
 }
 
 header p {
@@ -409,6 +418,7 @@ textarea {
   height: 30vh;
   padding: 10px;
   font-size: 1.8rem;
+  resize: none;
 }
 
 .promptSubmit {
@@ -445,17 +455,18 @@ textarea {
 .submitForm button {
   font-size: 1.6rem;
   margin: 0 10px;
+  color: #23395B;
 }
 
 .submitForm button {
-  background-color: #CEA7C8;
+  background-color: #EAD6E7;
   border: none;
   border-radius: 5%;
   padding: 3px 8px;
 }
 
 .submitForm button:hover, .submitForm button:focus {
-  background-color: #78CAD2;
+  background-color: #B2BCCC;
 }
 
 .submitForm button:active {
@@ -465,8 +476,8 @@ textarea {
 }
 
 footer {
-  background-color: #CEA7C8;
-  color: white;
+  background-color: #EAD6E7;
+  color: #23395B;
 }
 
 footer .footerFlex {
@@ -486,12 +497,34 @@ footer .footerFlex {
   color: white;
 }
 
+.App.darkStyles header,
+.App.darkStyles footer {
+  background-color: #EAE5E9;
+}
+
 .App.darkStyles h2 {
   color: white;
 }
 
 .App.darkStyles .timeSetFlexContainer,
 .App.darkStyles .timerButtons {
+  color: white;
+}
+
+.App.darkStyles .submitForm button {
+  background-color: #B2BCCC;
+}
+
+.App.darkStyles .submitForm button:hover, .App.darkStyles .submitForm button:focus {
+  background-color: #EAD6E7;
+}
+
+.App.darkStyles .submitForm label,
+.App.darkStyles .submitForm input {
+  color: white;
+}
+
+.App.darkStyles .promptSubmit h3 {
   color: white;
 }
 /*# sourceMappingURL=App.css.map */
