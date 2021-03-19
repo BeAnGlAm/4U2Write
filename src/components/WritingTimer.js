@@ -75,8 +75,8 @@ function WritingTimer() {
       <div className="writingTimerContainer">
         {/* SET TIMER + / - BUTTONS */}
         <div className="timeSetFlexContainer">
-          <AiOutlineMinusSquare title="decrease goal time by five minutes" onClick={decreaseTime} />
-          <AiOutlinePlusSquare title="increase goal time by five minutes" onClick={increaseTime} />
+          <AiOutlineMinusSquare className="timerButtons" title="decrease goal time by five minutes" onClick={decreaseTime} />
+          <AiOutlinePlusSquare className="timerButtons" title="increase goal time by five minutes" onClick={increaseTime} />
         </div>
         <div role="timer" className="timeDisplay">{convertedTime()}</div>
         {/* DISPLAY THE TIME */}
