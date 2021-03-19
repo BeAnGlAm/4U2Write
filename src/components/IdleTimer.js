@@ -18,7 +18,8 @@ function IdleTimer() {
   const { isIdle } = useIdleTimer({
     timeout: 1000 * 15,
     onIdle: handleOnIdle,
-    debounce: 500,
+    debounce: 1000,
+    startOnMount: false
   });
 
   return <></>;
