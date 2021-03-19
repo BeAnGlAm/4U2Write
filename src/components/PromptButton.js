@@ -1,3 +1,5 @@
+// A general button for use on multiple components and functions
+
 import { HiChevronDown } from "react-icons/hi";
 
 function PromptButton({ onClick }) {

@@ -8,6 +8,7 @@ import WritingArea from "./components/WritingArea.js";
 import IdleTimer from './components/IdleTimer.js';
 import PromptSubmit from "./components/PromptSubmit";
 import UserPrompt from "./components/UserPrompt";
+import About from "./components/About";
 import Footer from './components/Footer.js';
 
 import Swal from 'sweetalert2';  // can potentially be moved with handleSubmit and handleChange later? 
@@ -72,7 +73,7 @@ function App() {
         // console.log(updatedDate);  <--REMOVE
     });
     
-    // dark mode local storage check
+    // Dark Mode local storage check
     const currentTheme = localStorage.getItem('stylesColor');
     if(currentTheme === 'darkStyles') {
       setDarkMode(true)
@@ -105,7 +106,8 @@ function App() {
     setTextInput("");
   };
 
-    //Label onClick for dark mode toggle
+    //Event handler for Dark Mode toggle
+    //
   const handleLabelClick = () => {
     if (darkMode) {
       localStorage.setItem('stylesColor', 'lightStyles');
@@ -121,6 +123,7 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'darkStyles' : ''}`}>
+      <IdleTimer />
       <Header />
       <div className="modeSwitchWrap wrapper">
         <label 
@@ -135,23 +138,24 @@ function App() {
       <div className="promptFlex wrapper">
         <div className="promptBox">
           <DisplayPrompt onHide={() => setShowPrompt(!showPrompt)} />
-          {showPrompt &&<>
-            {
-              promptArray.map((item) => {
-                if (item.userPrompt.activeDate === activeDateString) {
-                  return(
-                    <h2 className="activePrompt" key={item.uniqueKey}>
-                      {item.userPrompt.prompt}
-                    </h2>
-                    )
-                }
-              })
-            }
-          </>}
+          {showPrompt &&
+            <>
+              {
+                promptArray.map((item) => {
+                  if (item.userPrompt.activeDate === activeDateString) {
+                    return(
+                      <h2 className="activePrompt" key={item.uniqueKey}>
+                        {item.userPrompt.prompt}
+                      </h2>
+                      )
+                  }
+                })
+              }
+            </>
+          }
         </div>
         <WritingTimer />
       </div>
-      <IdleTimer />
       <WritingArea />
         {/* <PromptSchedule /> */}
         <PromptSubmit onShow={() => setShowContent(!showContent)} />
@@ -161,6 +165,7 @@ function App() {
           change={handleChange}
           input={textInput}
         />}
+        <About />
         <Footer />
     </div>
   );

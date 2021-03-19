@@ -2,6 +2,9 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
+html {
+  scroll-behavior: smooth;
+}
 
 .App {
   text-align: center;
@@ -47,11 +50,23 @@ nav {
   display: flex;
   align-items: center;
 }
-
 .timeSetFlexContainer,
-.timerButtons {
+.timerButtonContainer {
   padding: 5px;
   font-size: 3rem;
+}
+
+.timerButtons{
+  cursor: pointer;
+  color: $bgDarkMode;
+  &:hover,
+  &:focus {
+    color: $highlightBlue;
+  }
+}
+
+.timeDisplay {
+  font-size: 2rem;
   color: $bgDarkMode;
 }
 
@@ -64,6 +79,10 @@ nav {
   .promptButton {
     transform: rotate(90deg);
   }
+}
+
+.promptButton {
+  cursor: pointer;
 }
 
 textarea {
@@ -80,6 +99,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: ease-in-out;
   h3 {
     margin-right: 20px;
   }
@@ -104,8 +124,9 @@ textarea {
   button {
     background-color: $heavyPink;
     border: none;
-    border-radius: 5%;
-    padding: 3px 8px;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
     &hover,
     &:focus {
       background-color: $neutralBlue;
@@ -117,7 +138,6 @@ textarea {
     }
   }
 }
-
 footer {
   background-color: $heavyPink;
   color: $bgDarkMode;
@@ -127,7 +147,6 @@ footer {
     align-items: center;
   }
 }
-
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;
@@ -142,12 +161,24 @@ footer {
     color: white;
   }
   .timeSetFlexContainer,
-  .timerButtons {
+  .timerButtonContainer {
+    .timerButtons{
+      color: white;
+      &:hover,
+      &:focus {
+        color: $highlightBlue;
+      }
+    }
+  }
+
+  .timeDisplay {
     color: white;
   }
+
   .submitForm {
     button {
       background-color: $neutralBlue;
+      padding: 15px;
       &:hover,
       &:focus {
         background-color: $heavyPink;

@@ -1,3 +1,5 @@
+// Displays/hides the user suggestion submission form on click
+
 import PromptButton from "./PromptButton";
 
 function PromptSubmit({ onShow }) {

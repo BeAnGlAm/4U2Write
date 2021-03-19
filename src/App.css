@@ -391,9 +391,22 @@ nav {
 }
 
 .timeSetFlexContainer,
-.timerButtons {
+.timerButtonContainer {
   padding: 5px;
   font-size: 3rem;
+}
+
+.timerButtons {
+  cursor: pointer;
+  color: #23395B;
+}
+
+.timerButtons:hover, .timerButtons:focus {
+  color: #78CAD2;
+}
+
+.timeDisplay {
+  font-size: 2rem;
   color: #23395B;
 }
 
@@ -413,6 +426,10 @@ nav {
 .promptBox .promptButton {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+}
+
+.promptButton {
+  cursor: pointer;
 }
 
 textarea {
@@ -435,6 +452,8 @@ textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: ease-in-out;
+  transition: ease-in-out;
 }
 
 .promptSubmit h3 {
@@ -473,8 +492,9 @@ textarea {
 .submitForm button {
   background-color: #EAD6E7;
   border: none;
-  border-radius: 5%;
-  padding: 3px 8px;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
 }
 
 .submitForm buttonhover, .submitForm button:focus {
@@ -523,13 +543,24 @@ footer .footerFlex {
   color: white;
 }
 
-.App.darkStyles .timeSetFlexContainer,
-.App.darkStyles .timerButtons {
+.App.darkStyles .timeSetFlexContainer .timerButtons,
+.App.darkStyles .timerButtonContainer .timerButtons {
+  color: white;
+}
+
+.App.darkStyles .timeSetFlexContainer .timerButtons:hover, .App.darkStyles .timeSetFlexContainer .timerButtons:focus,
+.App.darkStyles .timerButtonContainer .timerButtons:hover,
+.App.darkStyles .timerButtonContainer .timerButtons:focus {
+  color: #78CAD2;
+}
+
+.App.darkStyles .timeDisplay {
   color: white;
 }
 
 .App.darkStyles .submitForm button {
   background-color: #B2BCCC;
+  padding: 15px;
 }
 
 .App.darkStyles .submitForm button:hover, .App.darkStyles .submitForm button:focus {
