@@ -2,7 +2,7 @@
 
 function About() {
   return (
-    <div id="about">
+    <div id="about" className="wrapper">
       <p>Welcome to Write On.</p>
       <p>
         This is your space. Come as often as you’d like to get into the practice
