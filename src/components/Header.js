@@ -2,14 +2,9 @@ import { useState } from 'react';
 import PromptButton from './PromptButton';
 
 function Header() {
-  const [headerHidden, setHeaderHidden] = useState(false);
-
-  const showFull = () => {
-    setHeaderHidden(!headerHidden);
-  };
 
   return (
-    <header className={headerHidden ? "header-full" : "header-hidden"}>
+    <header>
       <div className="wrapper">
         <p>Welcome to Write On.</p>
         <p>
@@ -38,7 +33,7 @@ function Header() {
           practice, and the conscious building of daily ritual.” - Julia
           Cameron, The Artist’s Way.
         </p>
-        <nav>
+        <nav className="wrapper">
           <h1>Write On</h1>
           <div>
             <h3>Learn more</h3>

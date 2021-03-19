@@ -285,6 +285,7 @@ a {
   width: 100%;
   text-align: right;
   padding: 15px;
+  margin-top: 320px;
 }
 
 .modeSwitchWrap .modeSwitchLabel {
@@ -333,8 +334,10 @@ a {
 }
 
 header {
+  width: 100%;
   background-color: #EAD6E7;
   padding: 15px;
+  padding-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -348,6 +351,7 @@ header {
 }
 
 header p {
+  max-width: 800px;
   padding-bottom: 20px;
   margin: 0 auto;
 }
@@ -362,7 +366,7 @@ nav {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  margin-top: 20px;
+  padding-top: 60px;
 }
 
 .promptFlex {

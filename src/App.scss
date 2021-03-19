@@ -5,7 +5,7 @@
 
 .App {
   text-align: center;
-  height: 100%;  
+  height: 100%;
   background-color: $bgLightMode;
 }
 
@@ -16,12 +16,15 @@
 }
 
 header {
+  width: 100%;
   background-color: $heavyPink;
   padding: 15px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   p{
+    max-width: 800px;
     padding-bottom: 20px;
     margin: 0 auto;
   }
@@ -31,7 +34,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 20px;
+  padding-top: 60px;
 }
 
 .promptFlex {
