@@ -1,6 +1,7 @@
 @import 'partials/setup';
 @import 'partials/variables';
 @import 'partials/darkMode';
+@import 'partials/mediaQueries';
 
 html {
   scroll-behavior: smooth;
@@ -39,18 +40,29 @@ nav {
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 60px;
+  a {
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: $highlightBlue;
+    }
+  }
 }
 
 .promptFlex {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @include mobileMQ {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 
 .timeSetFlexContainer {
   display: flex;
   align-items: center;
 }
+
 .timeSetFlexContainer,
 .timerButtonContainer {
   padding: 5px;
@@ -80,6 +92,9 @@ nav {
   .promptButton {
     transform: rotate(90deg);
   }
+  @include mobileMQ {
+    padding: 15px 0;
+  }
 }
 
 .promptButton {
@@ -89,8 +104,8 @@ nav {
 textarea {
   border-style: hidden;
   margin: 20px 0 40px 0;
-  width: 70%;
-  height: 30vh;
+  width: 80%;
+  height: 60vh;
   padding: 10px;
   font-size: 1.8rem;
   resize: none;
@@ -103,6 +118,10 @@ textarea {
   transition: ease-in-out;
   h3 {
     margin-right: 20px;
+  }
+  @include mobileMQ {
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
@@ -121,6 +140,9 @@ textarea {
   }
   input {
     width: 50%;
+    @include mobileMQ {
+      width: 80%;
+    }
   }
   button {
     background-color: $heavyPink;
@@ -139,15 +161,50 @@ textarea {
     }
   }
 }
+
+hr {
+  margin: 20px 0 40px;
+  color: $bgDarkMode;
+}
+
+.about {
+  text-align: left;
+  width: 55%;
+  padding: 10px 0 30px;
+  @include tabletMQ {
+    width: 80%;
+  }
+  @include mobileMQ {
+    line-height: 25px;
+  }
+}
+
 footer {
   background-color: $heavyPink;
   color: $bgDarkMode;
+  line-height: 30px;
   .footerFlex {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    a {
+      transition: all 0.15s ease-in-out;
+      &:hover {
+        color: $highlightBlue;
+      }
+    }
+    @include tabletMQ {
+      flex-direction: column;
+      line-height: 5px;
+      padding: 10px 0;
+    }
+    @include mobileMQ {
+      line-height: 25px;
+    }
   }
 }
+
+//  --- Dark Styles ---
 .App.darkStyles {
   background-color: $bgDarkMode;
   color: white;
@@ -202,4 +259,15 @@ footer {
       color: $highlightBlue;
     }
   }
+
+  hr {
+    color: $bgLightMode;
+  }
+
+  .about {
+    p {
+      color: white;
+    }
+  }
+
 }

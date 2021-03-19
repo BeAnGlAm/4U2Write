@@ -232,8 +232,7 @@ html {
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
   font-family: "Josefin Sans", sans-serif;
   margin: 0;
   color: #23395B;
@@ -249,20 +248,23 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.75rem;
+  padding-right: 50px;
   color: #23395B;
+}
+
+@media (max-width: 800px) {
+  h2 {
+    font-size: 2rem;
+  }
 }
 
 h3 {
   font-size: 2.25rem;
 }
 
-h4 {
-  font-size: 1.8rem;
-}
-
 p {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 a {
@@ -374,6 +376,15 @@ nav {
   padding-top: 60px;
 }
 
+nav a {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #78CAD2;
+}
+
 .promptFlex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -384,6 +395,18 @@ nav {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+@media (max-width: 470px) {
+  .promptFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .timeSetFlexContainer {
@@ -433,6 +456,12 @@ nav {
           transform: rotate(90deg);
 }
 
+@media (max-width: 470px) {
+  .promptBox {
+    padding: 15px 0;
+  }
+}
+
 .promptButton {
   cursor: pointer;
 }
@@ -440,8 +469,8 @@ nav {
 textarea {
   border-style: hidden;
   margin: 20px 0 40px 0;
-  width: 70%;
-  height: 30vh;
+  width: 80%;
+  height: 60vh;
   padding: 10px;
   font-size: 1.8rem;
   resize: none;
@@ -463,6 +492,13 @@ textarea {
 
 .promptSubmit h3 {
   margin-right: 20px;
+}
+
+@media (max-width: 470px) {
+  .promptSubmit {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 .submitForm {
@@ -494,6 +530,12 @@ textarea {
   width: 50%;
 }
 
+@media (max-width: 470px) {
+  .submitForm input {
+    width: 80%;
+  }
+}
+
 .submitForm button {
   background-color: #EAD6E7;
   border: none;
@@ -512,21 +554,70 @@ textarea {
   left: 1px;
 }
 
+hr {
+  margin: 20px 0 40px;
+  color: #23395B;
+}
+
+.about {
+  text-align: left;
+  width: 55%;
+  padding: 10px 0 30px;
+}
+
+@media (max-width: 800px) {
+  .about {
+    width: 80%;
+  }
+}
+
+@media (max-width: 470px) {
+  .about {
+    line-height: 25px;
+  }
+}
+
 footer {
   background-color: #EAD6E7;
   color: #23395B;
+  line-height: 30px;
 }
 
 footer .footerFlex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+footer .footerFlex a {
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+footer .footerFlex a:hover {
+  color: #78CAD2;
+}
+
+@media (max-width: 800px) {
+  footer .footerFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    line-height: 5px;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 470px) {
+  footer .footerFlex {
+    line-height: 25px;
+  }
 }
 
 .App.darkStyles {
@@ -587,5 +678,13 @@ footer .footerFlex {
 
 .App.darkStyles .promptButton:hover, .App.darkStyles .promptButton:focus {
   color: #78CAD2;
+}
+
+.App.darkStyles hr {
+  color: #EAE5E9;
+}
+
+.App.darkStyles .about p {
+  color: white;
 }
 /*# sourceMappingURL=App.css.map */
