@@ -8,6 +8,7 @@ import WritingArea from "./components/WritingArea.js";
 import IdleTimer from './components/IdleTimer.js';
 import PromptSubmit from "./components/PromptSubmit";
 import UserPrompt from "./components/UserPrompt";
+import About from "./components/About";
 import Footer from './components/Footer.js';
 
 import Swal from 'sweetalert2';  // can potentially be moved with handleSubmit and handleChange later? 
@@ -164,7 +165,8 @@ function App() {
           change={handleChange}
           input={textInput}
         />}
-      <Footer />
+        <About />
+        <Footer />
     </div>
   );
 }

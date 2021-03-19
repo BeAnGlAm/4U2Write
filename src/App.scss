@@ -2,6 +2,10 @@
 @import 'partials/variables';
 @import 'partials/darkMode';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
   height: 100%;  
