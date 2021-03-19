@@ -3,9 +3,9 @@
 function WritingArea() {
   return(
     <form action="">
-      <label htmlFor="writingArea"></label>
+      <label id="writingArea" htmlFor="writingArea"></label>
       <textarea name="writingArea" id="writingArea" placeholder="Set a time goal and start writing"></textarea>
-      {/* add author name in stretch goal */}
+      {/* add author name in to support our stretch goal of saving writing entries to the database */}
     </form>
   )
 }

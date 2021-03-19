@@ -52,13 +52,13 @@ function WritingTimer() {
   //Alerts the user when they have met their time goal
   const timesUp = () => {
     if (timer < 1) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Congrats! You met your time goal!',
-          showConfirmButton: false,
-          timer: 1500
-        })
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Congrats! You met your time goal!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
 
