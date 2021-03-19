@@ -321,10 +321,15 @@ a {
   background-color: #EAE5E9;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
   height: 100%;
   background-color: #EAE5E9;
+  margin: 0;
 }
 
 .wrapper {
