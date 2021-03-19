@@ -49,18 +49,20 @@ nav {
 .timerButtonContainer {
   padding: 5px;
   font-size: 3rem;
-  .timerButtons{
-    cursor: pointer;
-    color: $bgDarkMode;
-    &:hover,
-    &:focus {
-      color: $highlightBlue;
-    }
+}
+
+.timerButtons{
+  cursor: pointer;
+  color: $bgDarkMode;
+  &:hover,
+  &:focus {
+    color: $highlightBlue;
   }
 }
 
 .timeDisplay {
   font-size: 2rem;
+  color: $bgDarkMode;
 }
 
 .promptBox {
@@ -165,6 +167,11 @@ footer {
       }
     }
   }
+
+  .timeDisplay {
+    color: white;
+  }
+
   .submitForm {
     button {
       background-color: $neutralBlue;

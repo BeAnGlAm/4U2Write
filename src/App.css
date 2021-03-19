@@ -392,20 +392,18 @@ nav {
   font-size: 3rem;
 }
 
-.timeSetFlexContainer .timerButtons,
-.timerButtonContainer .timerButtons {
+.timerButtons {
   cursor: pointer;
   color: #23395B;
 }
 
-.timeSetFlexContainer .timerButtons:hover, .timeSetFlexContainer .timerButtons:focus,
-.timerButtonContainer .timerButtons:hover,
-.timerButtonContainer .timerButtons:focus {
+.timerButtons:hover, .timerButtons:focus {
   color: #78CAD2;
 }
 
 .timeDisplay {
   font-size: 2rem;
+  color: #23395B;
 }
 
 .promptBox {
@@ -550,6 +548,10 @@ footer .footerFlex {
 .App.darkStyles .timerButtonContainer .timerButtons:hover,
 .App.darkStyles .timerButtonContainer .timerButtons:focus {
   color: #78CAD2;
+}
+
+.App.darkStyles .timeDisplay {
+  color: white;
 }
 
 .App.darkStyles .submitForm button {
