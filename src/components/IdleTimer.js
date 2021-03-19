@@ -1,14 +1,19 @@
+// component that shows an alert for when the user has been idle for 15 seconds
 import { useIdleTimer } from "react-idle-timer";
-import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 function IdleTimer() {
 
-   const [userIdle, setUserIdle] = useState(false);
-
    const handleOnIdle = () => {
       if (isIdle()) {
-         setUserIdle(!userIdle)
-      };
+         Swal.fire({
+            position: 'top-end',
+            icon: 'warning',
+            title: 'Keep writing! You got this!',
+            showConfirmButton: false,
+            timer: 1500
+         })
+      }
    }
 
    const {isIdle} = useIdleTimer({
@@ -19,7 +24,6 @@ function IdleTimer() {
 
    return (
       <div>
-         <p className={userIdle ? 'userWriting' : 'userIsIdle' }></p>
       </div>
    )
 }

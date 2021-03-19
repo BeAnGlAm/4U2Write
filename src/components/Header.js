@@ -3,14 +3,9 @@
 import { useState } from "react";
 
 function Header() {
-  const [headerHidden, setHeaderHidden] = useState(false);
-
-  const showFull = () => {
-    setHeaderHidden(!headerHidden);
-  };
 
   return (
-    <header className={headerHidden ? "header-full" : "header-hidden"}>
+    <header>
       <div className="wrapper">
         <nav>
           <h1>WriteOn</h1>
